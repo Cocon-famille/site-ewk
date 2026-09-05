@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin — L'École du Weekend</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="index.html">
+      <span class="disc" aria-hidden="true"></span>
+      <span class="brand-name">L'École<br>du Weekend</span>
+    </a>
+    <nav class="site-nav">
+      <span id="admin-whoami"></span>
+      <a href="#" id="admin-logout" hidden>Se déconnecter</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap admin">
+
+  <section id="admin-login" class="admin-panel">
+    <p class="eyebrow eyebrow--accent">Admin &middot; direction : Maël</p>
+    <h1>Se connecter</h1>
+    <p class="lede">Colle un <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">jeton GitHub</a> (fine-grained, limité au dépôt <code>Cocon-famille/site-ewk</code>, permission <em>Contents: Read and write</em>). Il reste dans ce navigateur, jamais envoyé ailleurs qu'à l'API GitHub.</p>
+    <form id="login-form" class="admin-form">
+      <label>Jeton GitHub
+        <input type="password" id="login-token" autocomplete="off" required>
+      </label>
+      <button type="submit">Se connecter</button>
+      <p class="admin-error" id="login-error" hidden></p>
+    </form>
+  </section>
+
+  <div id="admin-app" hidden>
+
+    <nav class="admin-tabs">
+      <a href="#fiche-du-jour" class="admin-tab-link" data-tab="fiche">Fiche du jour</a>
+      <a href="#preparer" class="admin-tab-link" data-tab="prep">Préparer un cours</a>
+      <a href="#bulletins" class="admin-tab-link" data-tab="bulletins">Bulletins</a>
+    </nav>
+
+    <section data-panel="fiche" class="admin-panel">
+      <h2>Fiche du jour</h2>
+      <p class="section-lede">Ajoute la fiche du dernier cours. Elle apparaît tout de suite dans l'école, sur le site dans une minute environ.</p>
+      <form id="fiche-form" class="admin-form admin-form--grid">
+        <label>Date
+          <input type="text" name="date" placeholder="Samedi 19 septembre" required>
+        </label>
+        <label>Matière
+          <input type="text" name="matiere" placeholder="Fractions" required>
+        </label>
+        <label>Durée
+          <input type="text" name="duree" placeholder="38 minutes" required>
+        </label>
+        <label class="admin-form-span">Compris aujourd'hui
+          <input type="text" name="compris" placeholder="Mettre au même dénominateur" required>
+        </label>
+        <label>Badge
+          <select name="badge">
+            <option value="">Aucun</option>
+            <option value="JUSTE">JUSTE</option>
+            <option value="QUESTION">QUESTION</option>
+          </select>
+        </label>
+        <button type="submit">Ajouter la fiche</button>
+      </form>
+      <p class="admin-status" id="fiche-status" hidden></p>
+      <h3>Fiches existantes</h3>
+      <div id="fiche-list" class="admin-list"></div>
+    </section>
+
+    <section data-panel="prep" class="admin-panel" hidden>
+      <h2>Préparer le prochain cours</h2>
+      <p class="section-lede">Des idées pour la prochaine fois. Ça n'apparaît nulle part sur le site public.</p>
+      <form id="prep-form" class="admin-form admin-form--grid">
+        <label>Matière
+          <input type="text" name="matiere" placeholder="Fractions" required>
+        </label>
+        <label class="admin-form-span">Idée
+          <input type="text" name="idee" placeholder="Comparer deux pizzas coupées différemment" required>
+        </label>
+        <button type="submit">Ajouter</button>
+      </form>
+      <div id="prep-list" class="admin-list"></div>
+    </section>
+
+    <section data-panel="bulletins" class="admin-panel" hidden>
+      <h2>Faire un bulletin</h2>
+      <p class="section-lede">Pas de notes, jamais &mdash; un résumé de ce qui a été compris et des progrès sur la période.</p>
+      <form id="bulletin-form" class="admin-form admin-form--grid">
+        <label>Période
+          <input type="text" name="periode" placeholder="Septembre 2026" required>
+        </label>
+        <label class="admin-form-span">Matières couvertes
+          <input type="text" name="matieres" placeholder="Fractions, conjugaison (séparées par des virgules)">
+        </label>
+        <label class="admin-form-span">Points forts
+          <textarea name="points_forts" rows="3" placeholder="Ce qu'il a compris, ce qui a progressé..."></textarea>
+        </label>
+        <label class="admin-form-span">Mot d'encouragement
+          <input type="text" name="mot" placeholder="Continue comme ça, tu vas y arriver.">
+        </label>
+        <button type="submit">Créer le bulletin</button>
+      </form>
+      <p class="admin-status" id="bulletin-status" hidden></p>
+      <h3>Bulletins existants</h3>
+      <div id="bulletin-list" class="admin-list"></div>
+    </section>
+
+  </div>
+
+</main>
+
+<script src="data.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
