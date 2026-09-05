@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'École du Weekend</title>
+<meta name="description" content="L'École du Weekend — Maël fait des cours à Marin, deux jours par semaine, quand il veut.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="#top">
+      <span class="disc" aria-hidden="true"></span>
+      <span class="brand-name">L'École<br>du Weekend</span>
+    </a>
+    <nav class="site-nav">
+      <a href="#regles">Règlement</a>
+      <a href="#badges">Badges</a>
+      <a href="#fiche">Fiche du jour</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero wrap">
+    <p class="eyebrow">EWK &middot; direction : Maël</p>
+    <h1>On apprend mieux<br>quand personne n'est obligé.</h1>
+    <p class="lede">L'École du Weekend, c'est Maël qui fait des cours à Marin. Quand il veut. Pas de bulletin, pas de sonnerie, pas de note en rouge.</p>
+    <p class="status" id="open-status" aria-live="polite"></p>
+    <div class="stat-grid">
+      <div class="stat"><span class="stat-num">2</span><span class="stat-label">jours d'ouverture</span></div>
+      <div class="stat"><span class="stat-num">1</span><span class="stat-label">élève, jamais plus</span></div>
+      <div class="stat"><span class="stat-num">45'</span><span class="stat-label">durée d'un cours</span></div>
+      <div class="stat"><span class="stat-num">0</span><span class="stat-label">note, jamais</span></div>
+    </div>
+  </section>
+
+  <section id="regles" class="section regles">
+    <div class="wrap">
+      <p class="eyebrow eyebrow--accent">Règlement</p>
+      <h2>Le règlement, six lignes</h2>
+      <ol class="rules">
+        <li><span class="rule-num">01</span><span>L'élève décide s'il y a cours. Toujours lui.</span></li>
+        <li><span class="rule-num">02</span><span>45 minutes maximum. On préfère s'arrêter trop tôt.</span></li>
+        <li><span class="rule-num">03</span><span>Aucune question n'est bête. Celle qu'on n'ose pas poser, si.</span></li>
+        <li><span class="rule-num">04</span><span>On note ce qu'on a compris, pas ce qu'on a raté.</span></li>
+        <li><span class="rule-num">05</span><span>Pas de devoirs. Jamais. Ce n'est pas cette école-là.</span></li>
+        <li><span class="rule-num">06</span><span>Un cours finit par un badge, même les jours moyens.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="badges" class="section badges">
+    <div class="wrap">
+      <p class="eyebrow eyebrow--accent">Badges</p>
+      <h2>Le système de récompenses</h2>
+      <p class="section-lede">Un badge à la fin de chaque cours. Fond crème et anneau d'encre pour la présence, aplat orange pour les paliers.</p>
+      <ul class="badge-grid">
+        <li class="badge">
+          <span class="badge-disc badge-disc--outline">1</span>
+          <span class="badge-label">Premier cours</span>
+        </li>
+        <li class="badge">
+          <span class="badge-disc badge-disc--outline">5</span>
+          <span class="badge-label">Habitué</span>
+        </li>
+        <li class="badge">
+          <span class="badge-disc badge-disc--orange">10</span>
+          <span class="badge-label">Palier orange</span>
+        </li>
+        <li class="badge">
+          <span class="badge-disc badge-disc--ink">JUSTE</span>
+          <span class="badge-label">Exercice réussi seul</span>
+        </li>
+        <li class="badge">
+          <span class="badge-disc badge-disc--dashed">QUESTION</span>
+          <span class="badge-label">A posé une colle au prof</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="fiche" class="section fiche">
+    <div class="wrap">
+      <p class="eyebrow eyebrow--accent">Fiche du jour</p>
+      <h2>Dernier cours</h2>
+      <div class="course-card">
+        <div class="course-card-head">
+          <span class="disc disc--small" aria-hidden="true"></span>
+          <span class="course-card-title">L'École du Weekend</span>
+          <span class="course-card-ref">FICHE N&deg; 014</span>
+        </div>
+        <table class="course-table">
+          <tbody>
+            <tr><th>Date</th><td>Samedi 12 septembre</td></tr>
+            <tr><th>Matière</th><td>Fractions</td></tr>
+            <tr><th>Durée</th><td>38 minutes</td></tr>
+            <tr><th>Compris aujourd'hui</th><td>Mettre au même dénominateur</td></tr>
+            <tr><th>Badge</th><td><span class="pill">JUSTE</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <span>L'École du Weekend &mdash; direction&nbsp;: Maël</span>
+    <span>Site &amp; code&nbsp;: <a href="https://github.com/Cocon-famille/site-ewk">github.com/Cocon-famille/site-ewk</a></span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
