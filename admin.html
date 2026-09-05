@@ -95,7 +95,7 @@
 
     <section data-panel="bulletins" class="admin-panel" hidden>
       <h2>Faire un bulletin</h2>
-      <p class="section-lede">Pas de notes, jamais &mdash; un résumé de ce qui a été compris et des progrès sur la période.</p>
+      <p class="section-lede">Un résumé de la période, et le vrai bulletin en pièce jointe si tu en as fait un.</p>
       <form id="bulletin-form" class="admin-form admin-form--grid">
         <label>Période
           <input type="text" name="periode" placeholder="Septembre 2026" required>
@@ -108,6 +108,9 @@
         </label>
         <label class="admin-form-span">Mot d'encouragement
           <input type="text" name="mot" placeholder="Continue comme ça, tu vas y arriver.">
+        </label>
+        <label class="admin-form-span">Pièce jointe (PDF, facultatif)
+          <input type="file" id="bulletin-file" accept="application/pdf">
         </label>
         <button type="submit">Créer le bulletin</button>
       </form>

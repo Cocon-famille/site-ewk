@@ -59,6 +59,33 @@
     sha[file] = json.content.sha;
   }
 
+  async function ghCreateFile(path, base64Content, message) {
+    const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `token ${token}`,
+        Accept: "application/vnd.github+json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ message, content: base64Content, branch: "main" }),
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.message || `Envoi du fichier : HTTP ${res.status}`);
+    }
+    const json = await res.json();
+    return json.content.path;
+  }
+
+  function readFileAsBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result.split(",")[1]);
+      reader.onerror = () => reject(new Error("Impossible de lire le fichier."));
+      reader.readAsDataURL(file);
+    });
+  }
+
   function showStatus(el, text, isError) {
     el.textContent = text;
     el.hidden = false;
@@ -229,7 +256,8 @@
     [...bulletins].reverse().forEach((b) => {
       const row = document.createElement("div");
       row.className = "admin-row";
-      row.innerHTML = `<span>${b.periode} &mdash; ${(b.matieres || []).join(", ")}</span>`;
+      const pdfLink = b.attachment ? ` &middot; <a href="${b.attachment}" target="_blank" rel="noopener">PDF</a>` : "";
+      row.innerHTML = `<span>${b.periode} &mdash; ${(b.matieres || []).join(", ")}${pdfLink}</span>`;
       const del = document.createElement("button");
       del.type = "button";
       del.className = "admin-row-delete";
@@ -250,8 +278,22 @@
     const form = e.target;
     const status = document.getElementById("bulletin-status");
     try {
-      const [bulletins, fiches] = await Promise.all([ghGet("bulletins.json"), ghGet("fiches.json")]);
       const fd = new FormData(form);
+      const file = document.getElementById("bulletin-file").files[0];
+
+      let attachment = null;
+      if (file) {
+        showStatus(status, "Envoi du PDF…");
+        const base64 = await readFileAsBase64(file);
+        const safeName = file.name.replace(/[^a-zA-Z0-9.-]/g, "_");
+        attachment = await ghCreateFile(
+          `bulletins-files/${Date.now()}-${safeName}`,
+          base64,
+          `Ajoute la pièce jointe du bulletin ${fd.get("periode")}`
+        );
+      }
+
+      const [bulletins, fiches] = await Promise.all([ghGet("bulletins.json"), ghGet("fiches.json")]);
       const badgeSet = new Set(fiches.map((f) => f.badge).filter(Boolean));
       bulletins.push({
         id: String(Date.now()),
@@ -260,6 +302,7 @@
         points_forts: fd.get("points_forts"),
         mot: fd.get("mot"),
         badges: [...badgeSet],
+        attachment,
       });
       await ghPut("bulletins.json", bulletins, `Ajoute le bulletin ${fd.get("periode")}`);
       form.reset();
