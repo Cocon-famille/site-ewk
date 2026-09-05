@@ -58,6 +58,7 @@
       ${b.points_forts ? `<p class="bulletin-points">${b.points_forts}</p>` : ""}
       ${(b.badges || []).length ? `<div class="bulletin-badges">${b.badges.map((x) => `<span class="pill">${x}</span>`).join(" ")}</div>` : ""}
       ${b.mot ? `<p class="bulletin-mot">&laquo;&nbsp;${b.mot}&nbsp;&raquo;</p>` : ""}
+      ${b.attachment ? `<a class="link-arrow" href="${b.attachment}" target="_blank" rel="noopener">Voir le bulletin en PDF &rarr;</a>` : ""}
     `;
     return el;
   }
