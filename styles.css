@@ -251,6 +251,17 @@ a:hover { color: var(--ink); border-bottom-color: var(--ink); }
   text-transform: uppercase;
   color: var(--ink-pale);
 }
+.badge--locked { opacity: .35; filter: grayscale(1); }
+
+/* Bulletins */
+.bulletin-list { display: flex; flex-direction: column; gap: 24px; }
+.bulletin-card { background: var(--paper-raised); border: 1px solid var(--chalk); padding: 28px; max-width: 560px; }
+.bulletin-card-head { display: flex; align-items: center; gap: 14px; padding-bottom: 16px; border-bottom: 2px solid var(--ink); margin-bottom: 16px; }
+.bulletin-card-title { font-family: var(--font-serif); font-size: 22px; }
+.bulletin-card-matieres { font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-pale); margin-top: 4px; }
+.bulletin-points { margin: 0 0 12px; color: #3A342B; }
+.bulletin-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.bulletin-mot { margin: 0; font-family: var(--font-serif); font-style: italic; font-size: 19px; color: var(--orange-text); }
 
 /* Course card */
 .course-card {
@@ -309,3 +320,49 @@ a:hover { color: var(--ink); border-bottom-color: var(--ink); }
   color: var(--ink-pale);
 }
 .footer-row a { letter-spacing: .12em; }
+
+/* Admin */
+.admin { padding: 56px 24px 96px; }
+.admin-panel { max-width: 640px; }
+.admin-panel h1 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(32px, 4.5vw, 48px); margin: 0 0 20px; }
+.admin-panel h2 { font-family: var(--font-serif); font-weight: 400; font-size: 32px; margin: 0 0 12px; }
+.admin-panel h3 { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-pale); margin: 40px 0 16px; }
+.admin-panel code { font-family: var(--font-mono); background: var(--chalk-bg); padding: 2px 6px; font-size: .9em; }
+
+#admin-whoami { font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-pale); }
+
+.admin-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; border-bottom: 1px solid var(--chalk); }
+.admin-tab-link {
+  padding: 10px 4px; margin-right: 24px;
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--ink-pale); border: 0; border-bottom: 2px solid transparent;
+}
+.admin-tab-link.is-active { color: var(--ink); border-bottom-color: var(--orange); }
+
+.admin-form { display: flex; flex-direction: column; gap: 16px; margin-bottom: 8px; }
+.admin-form--grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; align-items: end; }
+.admin-form label { display: flex; flex-direction: column; gap: 6px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-pale); }
+.admin-form-span { grid-column: 1 / -1; }
+.admin-form input, .admin-form select, .admin-form textarea {
+  font-family: var(--font-sans); font-size: 15px; color: var(--ink);
+  padding: 10px 12px; border: 1px solid var(--chalk); background: var(--paper-raised);
+  text-transform: none; letter-spacing: normal;
+}
+.admin-form textarea { resize: vertical; }
+.admin-form button {
+  align-self: start;
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--paper); background: var(--ink); border: 0; padding: 12px 20px; cursor: pointer;
+}
+.admin-form button:hover { background: var(--orange-text); }
+
+.admin-status { margin: 12px 0 0; font-family: var(--font-mono); font-size: 12px; padding: 10px 14px; background: var(--chalk-bg); border-left: 3px solid var(--green); color: var(--green); }
+.admin-status--error { border-left-color: var(--orange-text); color: var(--orange-text); }
+
+.admin-list { display: flex; flex-direction: column; gap: 1px; background: var(--chalk); border: 1px solid var(--chalk); }
+.admin-row { background: var(--paper); padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 14px; }
+.admin-row-delete {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--orange-text); background: none; border: 0; cursor: pointer; white-space: nowrap;
+}
+.admin-row-delete:hover { color: var(--ink); }

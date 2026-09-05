@@ -22,6 +22,7 @@
       <a href="reglement.html">Règlement</a>
       <a href="#badges">Badges</a>
       <a href="#fiche">Fiche du jour</a>
+      <a href="eleve.html">Espace élève</a>
     </nav>
   </div>
 </header>
@@ -84,21 +85,8 @@
     <div class="wrap">
       <p class="eyebrow eyebrow--accent">Fiche du jour</p>
       <h2>Dernier cours</h2>
-      <div class="course-card">
-        <div class="course-card-head">
-          <span class="disc disc--small" aria-hidden="true"></span>
-          <span class="course-card-title">L'École du Weekend</span>
-          <span class="course-card-ref">FICHE N&deg; 014</span>
-        </div>
-        <table class="course-table">
-          <tbody>
-            <tr><th>Date</th><td>Samedi 12 septembre</td></tr>
-            <tr><th>Matière</th><td>Fractions</td></tr>
-            <tr><th>Durée</th><td>38 minutes</td></tr>
-            <tr><th>Compris aujourd'hui</th><td>Mettre au même dénominateur</td></tr>
-            <tr><th>Badge</th><td><span class="pill">JUSTE</span></td></tr>
-          </tbody>
-        </table>
+      <div id="fiche-slot">
+        <p class="section-lede">Chargement…</p>
       </div>
     </div>
   </section>
@@ -112,6 +100,23 @@
   </div>
 </footer>
 
+<script src="data.js"></script>
 <script src="script.js"></script>
+<script>
+  (async function () {
+    const slot = document.getElementById("fiche-slot");
+    try {
+      const fiches = await EWK.fetchJSON("fiches.json");
+      slot.innerHTML = "";
+      if (!fiches.length) {
+        slot.innerHTML = '<p class="section-lede">Pas encore de cours. Ça ne va pas tarder.</p>';
+        return;
+      }
+      slot.appendChild(EWK.fiche(fiches[fiches.length - 1]));
+    } catch (e) {
+      slot.innerHTML = '<p class="section-lede">Fiche indisponible pour le moment.</p>';
+    }
+  })();
+</script>
 </body>
 </html>
