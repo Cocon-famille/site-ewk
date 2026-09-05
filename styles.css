@@ -90,7 +90,7 @@ a:hover { color: var(--ink); border-bottom-color: var(--ink); }
   text-transform: uppercase;
 }
 .site-nav a { color: var(--ink-pale); border: 0; }
-.site-nav a:hover { color: var(--ink); }
+.site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--ink); }
 
 /* Hero */
 .hero {
@@ -106,6 +106,7 @@ a:hover { color: var(--ink); border-bottom-color: var(--ink); }
   margin: 0 0 20px;
 }
 .eyebrow--accent { color: var(--orange-text); }
+.hero--page { padding-bottom: 40px; border-bottom: 1px solid var(--chalk); }
 .hero h1 {
   margin: 0 0 24px;
   font-family: var(--font-serif);
@@ -201,6 +202,17 @@ a:hover { color: var(--ink); border-bottom-color: var(--ink); }
   line-height: 1;
   min-width: 36px;
 }
+
+.link-arrow {
+  display: inline-block;
+  margin-top: 28px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(199, 70, 31, .35);
+}
+.link-arrow:hover { border-bottom-color: var(--ink); }
 
 /* Badges */
 .badge-grid {
