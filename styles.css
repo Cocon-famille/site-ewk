@@ -422,6 +422,20 @@ a:hover { color: var(--ink); border-bottom-color: var(--ink); }
 
 .poster--diplome { background: var(--paper); color: var(--ink); border: 12px solid var(--ink); }
 
+/* Emploi du temps */
+.edt-table { width: 100%; max-width: 560px; border-collapse: collapse; font-size: 15px; }
+.edt-table th, .edt-table td { border: 1px solid var(--chalk); padding: 16px 20px; text-align: center; }
+.edt-table thead th {
+  background: var(--chalk-bg); font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--ink-pale); font-weight: 400;
+}
+.edt-table tbody th {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--ink-pale); font-weight: 400; text-align: left; background: var(--paper);
+}
+.edt-row--current { background: var(--chalk-bg); }
+.edt-row--current th, .edt-row--current td { color: var(--ink); font-weight: 600; }
+
 @media print {
   .no-print { display: none !important; }
   .poster-body { background: none; }

@@ -25,7 +25,7 @@
         <h1 class="poster-title">Le règlement</h1>
         <ol class="poster-rules">
           <li><span class="poster-rule-num">1</span>C'est toi qui décides s'il y a cours.</li>
-          <li><span class="poster-rule-num">2</span>45 minutes maximum.</li>
+          <li><span class="poster-rule-num">2</span>10 à 20 minutes.</li>
           <li><span class="poster-rule-num">3</span>Aucune question n'est bête.</li>
           <li><span class="poster-rule-num">4</span>On note ce que tu as compris.</li>
           <li><span class="poster-rule-num">5</span>Jamais de devoirs.</li>

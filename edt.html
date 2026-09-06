@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Espace élève — L'École du Weekend</title>
-<meta name="description" content="Les fiches de cours, les badges et les bulletins de L'École du Weekend.">
+<title>Emploi du temps — L'École du Weekend</title>
+<meta name="description" content="L'emploi du temps de L'École du Weekend, semaine A / semaine B.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -20,9 +20,8 @@
     </a>
     <nav class="site-nav">
       <a href="reglement.html">Règlement</a>
-      <a href="edt.html">Emploi du temps</a>
-      <a href="index.html#badges">Badges</a>
-      <a href="eleve.html" aria-current="page">Espace élève</a>
+      <a href="edt.html" aria-current="page">Emploi du temps</a>
+      <a href="eleve.html">Espace élève</a>
     </nav>
   </div>
 </header>
@@ -30,34 +29,15 @@
 <main>
 
   <section class="hero wrap hero--page">
-    <p class="eyebrow">EWK &middot; espace élève</p>
-    <h1>Salut Marin.</h1>
-    <p class="lede">Tes cours, tes badges, tes bulletins. Tout ce que tu as compris est là.</p>
+    <p class="eyebrow">EWK &middot; emploi du temps</p>
+    <h1>Semaine A, semaine B.</h1>
+    <p class="lede">Comme au collège &mdash; sauf qu'il n'y a qu'un cours par jour d'école.</p>
+    <p class="status" id="semaine-status" aria-live="polite"></p>
   </section>
 
-  <section class="section badges">
+  <section class="section edt">
     <div class="wrap">
-      <p class="eyebrow eyebrow--accent">Badges</p>
-      <h2>Ce que tu as débloqué</h2>
-      <ul class="badge-grid" id="eleve-badges"></ul>
-    </div>
-  </section>
-
-  <section class="section bulletins">
-    <div class="wrap">
-      <p class="eyebrow eyebrow--accent">Bulletins</p>
-      <h2>Tes bulletins</h2>
-      <div id="eleve-bulletins" class="bulletin-list">
-        <p class="section-lede">Chargement…</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section fiche">
-    <div class="wrap">
-      <p class="eyebrow eyebrow--accent">Historique</p>
-      <h2>Tous tes cours</h2>
-      <div id="eleve-fiches" class="fiche-list">
+      <div id="edt-slot">
         <p class="section-lede">Chargement…</p>
       </div>
     </div>
@@ -73,6 +53,6 @@
 </footer>
 
 <script src="data.js"></script>
-<script src="eleve.js"></script>
+<script src="edt.js"></script>
 </body>
 </html>
