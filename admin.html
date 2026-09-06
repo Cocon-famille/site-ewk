@@ -46,6 +46,7 @@
       <a href="#fiche-du-jour" class="admin-tab-link" data-tab="fiche">Fiche du jour</a>
       <a href="#preparer" class="admin-tab-link" data-tab="prep">Préparer un cours</a>
       <a href="#bulletins" class="admin-tab-link" data-tab="bulletins">Bulletins</a>
+      <a href="#affiches" class="admin-tab-link" data-tab="affiches">Affiches</a>
     </nav>
 
     <section data-panel="fiche" class="admin-panel">
@@ -117,6 +118,33 @@
       <p class="admin-status" id="bulletin-status" hidden></p>
       <h3>Bulletins existants</h3>
       <div id="bulletin-list" class="admin-list"></div>
+    </section>
+
+    <section data-panel="affiches" class="admin-panel" hidden>
+      <h2>Affiches à imprimer</h2>
+      <p class="section-lede">Format A4, grand et coloré &mdash; pensées pour être collées sur un placard, pas pour être lues comme la charte.</p>
+
+      <h3>Règlement</h3>
+      <p><a href="affiche.html?type=reglement" target="_blank" rel="noopener" class="link-arrow">Ouvrir l'affiche du règlement &rarr;</a></p>
+
+      <h3>Badge d'un cours</h3>
+      <form id="poster-badge-form" class="admin-form admin-form--grid">
+        <label class="admin-form-span">Fiche
+          <select id="poster-fiche-select"></select>
+        </label>
+        <button type="submit">Ouvrir l'affiche</button>
+      </form>
+
+      <h3>Diplôme</h3>
+      <form id="poster-diplome-form" class="admin-form admin-form--grid">
+        <label class="admin-form-span">Titre
+          <input type="text" name="titre" placeholder="Diplôme des fractions" required>
+        </label>
+        <label class="admin-form-span">Message
+          <input type="text" name="message" placeholder="Bravo, continue comme ça." required>
+        </label>
+        <button type="submit">Ouvrir l'affiche</button>
+      </form>
     </section>
 
   </div>

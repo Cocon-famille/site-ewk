@@ -115,7 +115,8 @@
       logoutLink.hidden = false;
       loginPanel.hidden = true;
       app.hidden = false;
-      await Promise.all([loadFiches(), loadPrep(), loadBulletins()]);
+      const fiches = await Promise.all([loadFiches(), loadPrep(), loadBulletins()]).then((r) => r[0]);
+      populatePosterFicheSelect(fiches);
     } catch (e) {
       token = null;
       localStorage.removeItem(STORAGE_KEY);
@@ -311,6 +312,33 @@
     } catch (err) {
       showStatus(status, err.message, true);
     }
+  });
+
+  // --- affiches ---
+
+  function populatePosterFicheSelect(fiches) {
+    const select = document.getElementById("poster-fiche-select");
+    select.innerHTML = "";
+    [...fiches].reverse().forEach((f) => {
+      const opt = document.createElement("option");
+      opt.value = f.id;
+      opt.textContent = `${f.date} — ${f.matiere}${f.badge ? ` (${f.badge})` : ""}`;
+      select.appendChild(opt);
+    });
+  }
+
+  document.getElementById("poster-badge-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const id = document.getElementById("poster-fiche-select").value;
+    if (!id) return;
+    window.open(`affiche.html?type=badge&fiche=${encodeURIComponent(id)}`, "_blank");
+  });
+
+  document.getElementById("poster-diplome-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const params = new URLSearchParams({ type: "diplome", titre: fd.get("titre"), message: fd.get("message") });
+    window.open(`affiche.html?${params.toString()}`, "_blank");
   });
 
   boot();
