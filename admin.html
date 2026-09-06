@@ -47,6 +47,7 @@
       <a href="#preparer" class="admin-tab-link" data-tab="prep">Préparer un cours</a>
       <a href="#bulletins" class="admin-tab-link" data-tab="bulletins">Bulletins</a>
       <a href="#affiches" class="admin-tab-link" data-tab="affiches">Affiches</a>
+      <a href="#edt" class="admin-tab-link" data-tab="edt">Emploi du temps</a>
     </nav>
 
     <section data-panel="fiche" class="admin-panel">
@@ -145,6 +146,27 @@
         </label>
         <button type="submit">Ouvrir l'affiche</button>
       </form>
+    </section>
+
+    <section data-panel="edt" class="admin-panel" hidden>
+      <h2>Emploi du temps</h2>
+      <p class="section-lede">Comme au collège &mdash; semaine A, semaine B. Une matière par jour.</p>
+      <form id="edt-form" class="admin-form admin-form--grid">
+        <label>Semaine A &middot; Samedi
+          <input type="text" name="A-samedi" placeholder="Fractions">
+        </label>
+        <label>Semaine A &middot; Dimanche
+          <input type="text" name="A-dimanche" placeholder="Conjugaison">
+        </label>
+        <label>Semaine B &middot; Samedi
+          <input type="text" name="B-samedi" placeholder="Sciences">
+        </label>
+        <label>Semaine B &middot; Dimanche
+          <input type="text" name="B-dimanche" placeholder="Histoire">
+        </label>
+        <button type="submit">Enregistrer</button>
+      </form>
+      <p class="admin-status" id="edt-status" hidden></p>
     </section>
 
   </div>

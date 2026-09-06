@@ -115,7 +115,7 @@
       logoutLink.hidden = false;
       loginPanel.hidden = true;
       app.hidden = false;
-      const fiches = await Promise.all([loadFiches(), loadPrep(), loadBulletins()]).then((r) => r[0]);
+      const fiches = await Promise.all([loadFiches(), loadPrep(), loadBulletins(), loadEdt()]).then((r) => r[0]);
       populatePosterFicheSelect(fiches);
     } catch (e) {
       token = null;
@@ -339,6 +339,34 @@
     const fd = new FormData(e.target);
     const params = new URLSearchParams({ type: "diplome", titre: fd.get("titre"), message: fd.get("message") });
     window.open(`affiche.html?${params.toString()}`, "_blank");
+  });
+
+  // --- emploi du temps ---
+
+  async function loadEdt() {
+    const edt = await ghGet("edt.json");
+    const form = document.getElementById("edt-form");
+    form.elements["A-samedi"].value = edt.A?.samedi || "";
+    form.elements["A-dimanche"].value = edt.A?.dimanche || "";
+    form.elements["B-samedi"].value = edt.B?.samedi || "";
+    form.elements["B-dimanche"].value = edt.B?.dimanche || "";
+    return edt;
+  }
+
+  document.getElementById("edt-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const status = document.getElementById("edt-status");
+    try {
+      const fd = new FormData(e.target);
+      const edt = {
+        A: { samedi: fd.get("A-samedi"), dimanche: fd.get("A-dimanche") },
+        B: { samedi: fd.get("B-samedi"), dimanche: fd.get("B-dimanche") },
+      };
+      await ghPut("edt.json", edt, "Met à jour l'emploi du temps");
+      showStatus(status, "Emploi du temps enregistré. Visible sur le site dans une minute environ.");
+    } catch (err) {
+      showStatus(status, err.message, true);
+    }
   });
 
   boot();
