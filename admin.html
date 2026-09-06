@@ -150,23 +150,42 @@
 
     <section data-panel="edt" class="admin-panel" hidden>
       <h2>Emploi du temps</h2>
-      <p class="section-lede">Comme au collège &mdash; semaine A, semaine B. Une matière par jour.</p>
-      <form id="edt-form" class="admin-form admin-form--grid">
-        <label>Semaine A &middot; Samedi
-          <input type="text" name="A-samedi" placeholder="Fractions">
+      <p class="section-lede">Comme au collège &mdash; semaine A, semaine B, plusieurs cours par jour si besoin.</p>
+      <p><a href="affiche.html?type=edt" target="_blank" rel="noopener" class="link-arrow">Ouvrir l'affiche à imprimer &rarr;</a></p>
+      <form id="edt-add-form" class="admin-form admin-form--grid">
+        <label>Semaine
+          <select name="semaine">
+            <option value="A">Semaine A</option>
+            <option value="B">Semaine B</option>
+          </select>
         </label>
-        <label>Semaine A &middot; Dimanche
-          <input type="text" name="A-dimanche" placeholder="Conjugaison">
+        <label>Jour
+          <select name="jour">
+            <option value="samedi">Samedi</option>
+            <option value="dimanche">Dimanche</option>
+          </select>
         </label>
-        <label>Semaine B &middot; Samedi
-          <input type="text" name="B-samedi" placeholder="Sciences">
+        <label>Heure
+          <input type="text" name="heure" placeholder="10h00" required>
         </label>
-        <label>Semaine B &middot; Dimanche
-          <input type="text" name="B-dimanche" placeholder="Histoire">
+        <label>Matière
+          <input type="text" name="matiere" placeholder="Fractions" required>
         </label>
-        <button type="submit">Enregistrer</button>
+        <label>Couleur
+          <select name="couleur">
+            <option value="orange">Orange</option>
+            <option value="vert">Vert</option>
+            <option value="bleu">Bleu</option>
+            <option value="violet">Violet</option>
+            <option value="jaune">Jaune</option>
+            <option value="rose">Rose</option>
+          </select>
+        </label>
+        <button type="submit">Ajouter le cours</button>
       </form>
       <p class="admin-status" id="edt-status" hidden></p>
+      <h3>Cours programmés</h3>
+      <div id="edt-list" class="admin-list"></div>
     </section>
 
   </div>

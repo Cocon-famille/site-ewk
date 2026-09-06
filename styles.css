@@ -422,6 +422,28 @@ a:hover { color: var(--ink); border-bottom-color: var(--ink); }
 
 .poster--diplome { background: var(--paper); color: var(--ink); border: 12px solid var(--ink); }
 
+.poster--edt { background: var(--paper); color: var(--ink); }
+.poster-inner--edt { gap: 32px; padding: 40px; width: 100%; }
+.poster-edt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; width: 100%; }
+.poster-edt-semaine { background: var(--paper-raised); border: 1px solid var(--chalk); padding: 24px; text-align: left; }
+.poster-edt-semaine-label {
+  font-family: var(--font-serif); font-size: 26px; margin-bottom: 20px; text-align: center;
+  border-bottom: 2px solid var(--ink); padding-bottom: 12px;
+}
+.poster-edt-day { margin-bottom: 20px; }
+.poster-edt-day:last-child { margin-bottom: 0; }
+.poster-edt-day-label {
+  display: block; font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ink-pale); margin-bottom: 10px;
+}
+.poster-edt-chip {
+  display: block; padding: 10px 14px; border-radius: 6px; margin-bottom: 8px;
+  font-family: var(--font-sans); font-size: 16px;
+}
+.poster-edt-chip:last-child { margin-bottom: 0; }
+.poster-edt-chip b { font-family: var(--font-mono); font-size: 13px; margin-right: 8px; }
+.poster-edt-empty { color: var(--ink-pale); font-size: 15px; }
+
 /* Emploi du temps */
 .edt-table { width: 100%; max-width: 560px; border-collapse: collapse; font-size: 15px; }
 .edt-table th, .edt-table td { border: 1px solid var(--chalk); padding: 16px 20px; text-align: center; }
@@ -435,6 +457,12 @@ a:hover { color: var(--ink); border-bottom-color: var(--ink); }
 }
 .edt-row--current { background: var(--chalk-bg); }
 .edt-row--current th, .edt-row--current td { color: var(--ink); font-weight: 600; }
+.edt-chip-list { display: flex; flex-direction: column; gap: 6px; align-items: center; }
+.edt-chip {
+  display: inline-block; padding: 6px 12px; border-radius: 6px;
+  font-family: var(--font-sans); font-size: 13px; letter-spacing: 0; text-transform: none;
+}
+.edt-chip b { font-family: var(--font-mono); font-weight: 700; font-size: 11px; margin-right: 6px; }
 
 @media print {
   .no-print { display: none !important; }
