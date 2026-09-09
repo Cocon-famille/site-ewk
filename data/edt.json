@@ -1,20 +1,39 @@
 {
   "A": {
     "samedi": [
-      { "heure": "10h00", "matiere": "Fractions", "couleur": "orange" },
-      { "heure": "11h00", "matiere": "Sciences", "couleur": "vert" }
+      {
+        "heure": "10h00",
+        "matiere": "Fractions",
+        "couleur": "orange"
+      },
+      {
+        "heure": "11h00",
+        "matiere": "Sciences",
+        "couleur": "vert"
+      }
     ],
     "dimanche": [
-      { "heure": "10h00", "matiere": "Conjugaison", "couleur": "bleu" }
+      {
+        "heure": "10h00",
+        "matiere": "Conjugaison",
+        "couleur": "bleu"
+      }
     ]
   },
   "B": {
     "samedi": [
-      { "heure": "10h00", "matiere": "Histoire", "couleur": "violet" }
+      {
+        "heure": "10h00",
+        "matiere": "Histoire",
+        "couleur": "violet"
+      }
     ],
     "dimanche": [
-      { "heure": "10h00", "matiere": "Poésie", "couleur": "rose" },
-      { "heure": "11h00", "matiere": "Géographie", "couleur": "jaune" }
+      {
+        "heure": "10h00",
+        "matiere": "Poésie",
+        "couleur": "rose"
+      }
     ]
   }
 }
