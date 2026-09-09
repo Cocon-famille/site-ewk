@@ -28,12 +28,6 @@
         "couleur": "violet"
       }
     ],
-    "dimanche": [
-      {
-        "heure": "10h00",
-        "matiere": "Poésie",
-        "couleur": "rose"
-      }
-    ]
+    "dimanche": []
   }
 }
