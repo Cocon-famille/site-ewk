@@ -2,11 +2,6 @@
   "A": {
     "samedi": [
       {
-        "heure": "10h00",
-        "matiere": "Fractions",
-        "couleur": "orange"
-      },
-      {
         "heure": "11h00",
         "matiere": "Sciences",
         "couleur": "vert"
