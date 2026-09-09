@@ -20,6 +20,15 @@ EWK.computeBadges = function (fiches) {
   };
 };
 
+EWK.COLORS = {
+  orange: { bg: "#E4572E", text: "#FFFDF8" },
+  vert: { bg: "#0F8A5F", text: "#FFFDF8" },
+  bleu: { bg: "#3B6E8F", text: "#FFFDF8" },
+  violet: { bg: "#7A5C9E", text: "#FFFDF8" },
+  jaune: { bg: "#D9A54A", text: "#14120F" },
+  rose: { bg: "#B85C7A", text: "#FFFDF8" },
+};
+
 EWK.isoWeek = function (date) {
   const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
   const dayNum = d.getUTCDay() || 7;

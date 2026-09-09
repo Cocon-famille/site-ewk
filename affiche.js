@@ -60,6 +60,44 @@
     );
   }
 
+  if (type === "edt") {
+    root.className = "poster poster--edt";
+    let edt = { A: {}, B: {} };
+    try {
+      edt = await EWK.fetchJSON("edt.json");
+    } catch (e) {
+      /* affiche vide si les données ne chargent pas */
+    }
+    const sorted = (courses) => [...(courses || [])].sort((a, b) => a.heure.localeCompare(b.heure));
+    const chips = (courses) =>
+      sorted(courses)
+        .map((c) => {
+          const col = EWK.COLORS[c.couleur] || EWK.COLORS.orange;
+          return `<span class="poster-edt-chip" style="background:${col.bg};color:${col.text}"><b>${c.heure}</b> ${c.matiere}</span>`;
+        })
+        .join("") || '<span class="poster-edt-empty">&mdash;</span>';
+    root.appendChild(
+      el(`
+      <div class="poster-inner poster-inner--edt">
+        <span class="disc poster-logo" aria-hidden="true" style="--size:80px"></span>
+        <h1 class="poster-title" style="font-size:44px">Emploi du temps</h1>
+        <div class="poster-edt-grid">
+          <div class="poster-edt-semaine">
+            <div class="poster-edt-semaine-label">Semaine A</div>
+            <div class="poster-edt-day"><span class="poster-edt-day-label">Samedi</span>${chips(edt.A?.samedi)}</div>
+            <div class="poster-edt-day"><span class="poster-edt-day-label">Dimanche</span>${chips(edt.A?.dimanche)}</div>
+          </div>
+          <div class="poster-edt-semaine">
+            <div class="poster-edt-semaine-label">Semaine B</div>
+            <div class="poster-edt-day"><span class="poster-edt-day-label">Samedi</span>${chips(edt.B?.samedi)}</div>
+            <div class="poster-edt-day"><span class="poster-edt-day-label">Dimanche</span>${chips(edt.B?.dimanche)}</div>
+          </div>
+        </div>
+      </div>
+    `)
+    );
+  }
+
   if (type === "diplome") {
     root.className = "poster poster--diplome";
     const titre = params.get("titre") || "Diplôme";

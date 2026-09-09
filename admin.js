@@ -343,27 +343,51 @@
 
   // --- emploi du temps ---
 
+  const JOUR_LABEL = { samedi: "Samedi", dimanche: "Dimanche" };
+
   async function loadEdt() {
     const edt = await ghGet("edt.json");
-    const form = document.getElementById("edt-form");
-    form.elements["A-samedi"].value = edt.A?.samedi || "";
-    form.elements["A-dimanche"].value = edt.A?.dimanche || "";
-    form.elements["B-samedi"].value = edt.B?.samedi || "";
-    form.elements["B-dimanche"].value = edt.B?.dimanche || "";
+    const list = document.getElementById("edt-list");
+    list.innerHTML = "";
+    ["A", "B"].forEach((semaine) => {
+      ["samedi", "dimanche"].forEach((jour) => {
+        (edt[semaine]?.[jour] || []).forEach((course, index) => {
+          const row = document.createElement("div");
+          row.className = "admin-row";
+          row.innerHTML = `<span>Semaine ${semaine} &middot; ${JOUR_LABEL[jour]} &middot; ${course.heure} &mdash; ${course.matiere} <span class="pill" style="background:${(EWK.COLORS[course.couleur] || EWK.COLORS.orange).bg};color:${(EWK.COLORS[course.couleur] || EWK.COLORS.orange).text}">${course.couleur}</span></span>`;
+          const del = document.createElement("button");
+          del.type = "button";
+          del.className = "admin-row-delete";
+          del.textContent = "Supprimer";
+          del.addEventListener("click", async () => {
+            edt[semaine][jour].splice(index, 1);
+            await ghPut("edt.json", edt, `Retire un cours (semaine ${semaine}, ${jour})`);
+            loadEdt();
+          });
+          row.appendChild(del);
+          list.appendChild(row);
+        });
+      });
+    });
     return edt;
   }
 
-  document.getElementById("edt-form").addEventListener("submit", async (e) => {
+  document.getElementById("edt-add-form").addEventListener("submit", async (e) => {
     e.preventDefault();
+    const form = e.target;
     const status = document.getElementById("edt-status");
     try {
-      const fd = new FormData(e.target);
-      const edt = {
-        A: { samedi: fd.get("A-samedi"), dimanche: fd.get("A-dimanche") },
-        B: { samedi: fd.get("B-samedi"), dimanche: fd.get("B-dimanche") },
-      };
-      await ghPut("edt.json", edt, "Met à jour l'emploi du temps");
-      showStatus(status, "Emploi du temps enregistré. Visible sur le site dans une minute environ.");
+      const edt = await ghGet("edt.json");
+      const fd = new FormData(form);
+      const semaine = fd.get("semaine");
+      const jour = fd.get("jour");
+      edt[semaine] = edt[semaine] || {};
+      edt[semaine][jour] = edt[semaine][jour] || [];
+      edt[semaine][jour].push({ heure: fd.get("heure"), matiere: fd.get("matiere"), couleur: fd.get("couleur") });
+      await ghPut("edt.json", edt, `Ajoute un cours (semaine ${semaine}, ${jour})`);
+      form.reset();
+      showStatus(status, "Cours ajouté. Visible sur le site dans une minute environ.");
+      loadEdt();
     } catch (err) {
       showStatus(status, err.message, true);
     }
