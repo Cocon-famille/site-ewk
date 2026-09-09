@@ -12,13 +12,7 @@
         "couleur": "vert"
       }
     ],
-    "dimanche": [
-      {
-        "heure": "10h00",
-        "matiere": "Conjugaison",
-        "couleur": "bleu"
-      }
-    ]
+    "dimanche": []
   },
   "B": {
     "samedi": [],
