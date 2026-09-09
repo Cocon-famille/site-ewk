@@ -21,13 +21,7 @@
     ]
   },
   "B": {
-    "samedi": [
-      {
-        "heure": "10h00",
-        "matiere": "Histoire",
-        "couleur": "violet"
-      }
-    ],
+    "samedi": [],
     "dimanche": []
   }
 }
