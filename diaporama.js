@@ -132,9 +132,15 @@
         <h1 class="diapo-title">${slide.title}</h1>
         <p class="diapo-sub">${slide.body}</p>
         <div class="diapo-badges">
-          <span class="badge-disc badge-disc--outline diapo-badge-disc">1</span>
-          <span class="badge-disc badge-disc--orange diapo-badge-disc">10</span>
-          <span class="badge-disc badge-disc--ink diapo-badge-disc">JUSTE</span>
+          ${slide.items
+            .map(
+              (it) => `
+            <div class="diapo-badge-item">
+              <span class="badge-disc ${it.cls} diapo-badge-disc">${it.big}</span>
+              <span class="diapo-badge-label">${it.label}</span>
+            </div>`
+            )
+            .join("")}
         </div>`;
     }
     if (slide.type === "quiz") {

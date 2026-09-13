@@ -49,6 +49,7 @@
       <a href="#affiches" class="admin-tab-link" data-tab="affiches">Affiches</a>
       <a href="#edt" class="admin-tab-link" data-tab="edt">Emploi du temps</a>
       <a href="#cours" class="admin-tab-link" data-tab="cours">Cours</a>
+      <a href="#messages" class="admin-tab-link" data-tab="messages">Messages</a>
     </nav>
 
     <section data-panel="fiche" class="admin-panel">
@@ -206,6 +207,23 @@
       <h2>Cours (diaporamas)</h2>
       <p class="section-lede">Les leçons présentables à Marin. Clique pour lancer.</p>
       <div id="cours-list" class="admin-list"></div>
+    </section>
+
+    <section data-panel="messages" class="admin-panel" hidden>
+      <h2>Messages</h2>
+      <p class="section-lede">Une annonce pour Marin &mdash; par exemple un changement d'horaire. Visible en haut de son espace élève.</p>
+      <form id="message-form" class="admin-form admin-form--grid">
+        <label>Date
+          <input type="text" name="date" placeholder="Samedi 19 septembre" required>
+        </label>
+        <label class="admin-form-span">Message
+          <input type="text" name="texte" placeholder="Pas cours ce samedi, on décale à dimanche." required>
+        </label>
+        <button type="submit">Publier</button>
+      </form>
+      <p class="admin-status" id="message-status" hidden></p>
+      <h3>Messages publiés</h3>
+      <div id="message-list" class="admin-list"></div>
     </section>
 
   </div>

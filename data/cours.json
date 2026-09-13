@@ -16,6 +16,11 @@
         "body": "Une école qui ouvre deux jours par semaine. Avec Maël. Juste pour toi."
       },
       {
+        "type": "info",
+        "title": "Pourquoi le weekend ?",
+        "body": "Le reste de la semaine, tu es à la grande école. Le weekend, c'est différent&nbsp;: plus court, plus tranquille, et c'est toi qui décides."
+      },
+      {
         "type": "list",
         "title": "Le règlement, en 4 points",
         "items": [
@@ -26,9 +31,21 @@
         ]
       },
       {
+        "type": "info",
+        "title": "Une question, c'est jamais bête",
+        "body": "Si tu ne comprends pas quelque chose, il faut le dire. C'est exactement comme ça qu'on apprend."
+      },
+      {
         "type": "badges",
-        "title": "Les badges",
-        "body": "Après chaque cours, tu gagnes un badge. Regarde :"
+        "title": "Les badges, mode d'emploi",
+        "body": "Après chaque cours, tu gagnes un badge. Il y en a plusieurs sortes :",
+        "items": [
+          { "cls": "badge-disc--outline", "big": "1", "label": "Premier cours : dès ta première fois." },
+          { "cls": "badge-disc--outline", "big": "5", "label": "Habitué : après 5 cours." },
+          { "cls": "badge-disc--orange", "big": "10", "label": "Palier orange : après 10 cours." },
+          { "cls": "badge-disc--ink", "big": "JUSTE", "label": "Quand tu réussis un exercice tout seul." },
+          { "cls": "badge-disc--dashed", "big": "?", "label": "Quand tu poses une colle au prof." }
+        ]
       },
       {
         "type": "info",
@@ -59,6 +76,11 @@
         "type": "quiz",
         "question": "Après un cours, tu gagnes...",
         "options": [{ "text": "Un devoir" }, { "text": "Un badge", "correct": true }, { "text": "Une punition" }]
+      },
+      {
+        "type": "quiz",
+        "question": "Est-ce qu'il y a des devoirs à faire après ?",
+        "options": [{ "text": "Oui" }, { "text": "Non", "correct": true }]
       },
       {
         "type": "end",
@@ -106,6 +128,22 @@
         ]
       },
       {
+        "type": "info",
+        "title": "Compter des badges",
+        "body": "Imagine que tu as gagné 3 badges samedi, et 2 badges dimanche. Ça fait 5 badges en tout&nbsp;: 3, puis 4, puis 5."
+      },
+      {
+        "type": "visual",
+        "title": "3 + 2, ça fait combien ?",
+        "items": [
+          { "big": "3", "label": "samedi" },
+          { "big": "+" },
+          { "big": "2", "label": "dimanche" },
+          { "big": "=" },
+          { "big": "5", "label": "en tout", "highlight": true }
+        ]
+      },
+      {
         "type": "transition",
         "title": "Prêt pour un petit contrôle ?",
         "body": "On vérifie si tu sais compter."
@@ -124,6 +162,16 @@
         "type": "quiz",
         "question": "Combien font 2 + 1 ?",
         "options": [{ "text": "2" }, { "text": "3", "correct": true }, { "text": "4" }]
+      },
+      {
+        "type": "quiz",
+        "question": "Combien font 4 + 1 ?",
+        "options": [{ "text": "4" }, { "text": "5", "correct": true }, { "text": "6" }]
+      },
+      {
+        "type": "quiz",
+        "question": "Quel nombre vient juste avant 10 ?",
+        "options": [{ "text": "8" }, { "text": "9", "correct": true }, { "text": "11" }]
       },
       {
         "type": "end",
@@ -162,7 +210,28 @@
       {
         "type": "info",
         "title": "Les voyelles, c'est spécial",
-        "body": "On peut les chanter toutes seules, sans les autres lettres."
+        "body": "On peut les chanter toutes seules, sans les autres lettres. Essaie de dire &laquo;&nbsp;A... E... I... O... U...&nbsp;&raquo;"
+      },
+      {
+        "type": "info",
+        "title": "Et les consonnes ?",
+        "body": "Les autres lettres s'appellent des consonnes. Elles ont besoin d'une voyelle à côté pour faire un son qu'on peut prononcer facilement, comme &laquo;&nbsp;MA&nbsp;&raquo; ou &laquo;&nbsp;RI&nbsp;&raquo;."
+      },
+      {
+        "type": "visual",
+        "title": "Ton prénom, lettre par lettre",
+        "items": [
+          { "big": "M" },
+          { "big": "A", "highlight": true },
+          { "big": "R" },
+          { "big": "I", "highlight": true },
+          { "big": "N" }
+        ]
+      },
+      {
+        "type": "info",
+        "title": "MARIN",
+        "body": "Ton prénom a deux voyelles (en orange) et trois consonnes. Ensemble, elles font le son de ton nom."
       },
       {
         "type": "transition",
@@ -185,9 +254,14 @@
         "options": [{ "text": "A", "correct": true }, { "text": "V" }, { "text": "O" }]
       },
       {
+        "type": "quiz",
+        "question": "Combien de voyelles y a-t-il dans &laquo;&nbsp;MARIN&nbsp;&raquo; ?",
+        "options": [{ "text": "1" }, { "text": "2", "correct": true }, { "text": "3" }]
+      },
+      {
         "type": "end",
         "title": "Bravo !",
-        "body": "Tu connais les voyelles."
+        "body": "Tu connais les voyelles, et même celles de ton prénom."
       }
     ]
   },
@@ -226,6 +300,16 @@
         ]
       },
       {
+        "type": "info",
+        "title": "Hier, aujourd'hui, demain",
+        "body": "Chaque jour a un jour d'avant (hier) et un jour d'après (demain). Après vendredi vient samedi, et après samedi vient dimanche."
+      },
+      {
+        "type": "info",
+        "title": "Et après dimanche ?",
+        "body": "On recommence au début&nbsp;: lundi ! La semaine tourne en boucle, toujours dans le même ordre."
+      },
+      {
         "type": "transition",
         "title": "Prêt pour un petit contrôle ?",
         "body": "On vérifie si tu as bien écouté."
@@ -248,6 +332,11 @@
           { "text": "Samedi et dimanche", "correct": true },
           { "text": "Mercredi et jeudi" }
         ]
+      },
+      {
+        "type": "quiz",
+        "question": "Quel jour vient juste après dimanche ?",
+        "options": [{ "text": "Samedi" }, { "text": "Lundi", "correct": true }, { "text": "Mardi" }]
       },
       {
         "type": "end",
