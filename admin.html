@@ -53,6 +53,7 @@
       <a href="#edt" class="admin-tab-link" data-tab="edt">Emploi du temps</a>
       <a href="#cours" class="admin-tab-link" data-tab="cours">Cours</a>
       <a href="#messages" class="admin-tab-link" data-tab="messages">Messages</a>
+      <a href="#classe" class="admin-tab-link" data-tab="classe">Classe 2026-2027</a>
     </nav>
 
     <section data-panel="fiche" class="admin-panel">
@@ -233,6 +234,35 @@
       <p class="admin-status" id="message-status" hidden></p>
       <h3>Messages publiés</h3>
       <div id="message-list" class="admin-list"></div>
+    </section>
+
+    <section data-panel="classe" class="admin-panel" hidden>
+      <h2>Liste de classe &mdash; rentrée 2026-2027</h2>
+      <p class="section-lede">Niveau : IE1 = PS ou moins &middot; IE2 = MS &middot; IE3 = CP &middot; IE4 = CE1 &middot; IE5 = CE2 et plus.</p>
+      <form id="classe-form" class="admin-form admin-form--grid">
+        <label>Nom de famille
+          <input type="text" name="nom" required>
+        </label>
+        <label>Prénom
+          <input type="text" name="prenom" required>
+        </label>
+        <label>Date de naissance
+          <input type="date" name="naissance" required>
+        </label>
+        <label>Niveau
+          <select name="niveau" required>
+            <option value="IE1">IE1 &middot; PS ou moins</option>
+            <option value="IE2">IE2 &middot; MS</option>
+            <option value="IE3">IE3 &middot; CP</option>
+            <option value="IE4">IE4 &middot; CE1</option>
+            <option value="IE5">IE5 &middot; CE2 et plus</option>
+          </select>
+        </label>
+        <button type="submit">Ajouter à la classe</button>
+      </form>
+      <p class="admin-status" id="classe-status" hidden></p>
+      <h3>Élèves inscrits</h3>
+      <div id="classe-list" class="admin-list"></div>
     </section>
 
   </div>

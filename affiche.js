@@ -5,6 +5,12 @@
 
   document.getElementById("print-btn").addEventListener("click", () => window.print());
 
+  if (/eleve\.html/.test(document.referrer)) {
+    const back = document.getElementById("back-link");
+    back.href = "eleve.html";
+    back.textContent = "← Retour à l'espace élève";
+  }
+
   const BADGE_META = {
     JUSTE: { disc: "poster-badge-disc--juste", text: "JUSTE" },
     QUESTION: { disc: "poster-badge-disc--question", text: "?" },
