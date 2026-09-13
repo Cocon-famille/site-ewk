@@ -462,6 +462,20 @@ a:hover { color: var(--ink); border-bottom-color: var(--ink); }
   text-transform: uppercase; color: var(--ink-pale); text-align: center;
 }
 
+.poster--inscription { background: var(--paper); color: var(--ink); align-items: flex-start; }
+.poster-inscription { width: 100%; max-width: 640px; padding: 48px; border: 2px solid var(--ink); text-align: left; }
+.poster-inscription-head { display: flex; align-items: center; gap: 16px; padding-bottom: 20px; border-bottom: 2px solid var(--ink); margin-bottom: 28px; }
+.poster-inscription-title { font-family: var(--font-sans); font-weight: 600; font-size: 18px; }
+.poster-inscription-sub { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-pale); margin-top: 4px; }
+.poster-inscription-field { margin-bottom: 26px; }
+.poster-inscription-field label { display: block; font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-pale); margin-bottom: 10px; }
+.poster-inscription-line { height: 28px; border-bottom: 1px solid var(--ink); }
+.poster-inscription-line--short { max-width: 220px; }
+.poster-inscription-note { margin: 8px 0 0; font-size: 12px; color: var(--ink-pale); }
+.poster-inscription-signatures { display: flex; gap: 40px; margin-top: 20px; }
+.poster-inscription-signature { flex: 1; }
+.poster-inscription-signature label { display: block; margin-top: 10px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-pale); }
+
 .poster--edt { background: var(--paper); color: var(--ink); }
 .poster-inner--edt { gap: 32px; padding: 40px; width: 100%; }
 .poster-edt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; width: 100%; }

@@ -150,6 +150,61 @@
     );
   }
 
+  if (type === "inscription") {
+    root.className = "poster poster--inscription";
+    root.appendChild(
+      el(`
+      <div class="poster-inscription">
+        <div class="poster-inscription-head">
+          <span class="disc disc--small" aria-hidden="true"></span>
+          <div>
+            <div class="poster-inscription-title">L'École du Weekend</div>
+            <div class="poster-inscription-sub">Fiche d'inscription &mdash; Rentrée 2026-2027</div>
+          </div>
+        </div>
+
+        <div class="poster-inscription-field">
+          <label>Nom de l'élève</label>
+          <div class="poster-inscription-line"></div>
+        </div>
+
+        <div class="poster-inscription-field">
+          <label>Niveau (IE1 à IE5)</label>
+          <div class="poster-inscription-line poster-inscription-line--short"></div>
+          <p class="poster-inscription-note">IE1 = PS ou moins &middot; IE2 = MS &middot; IE3 = CP &middot; IE4 = CE1 &middot; IE5 = CE2 et plus</p>
+        </div>
+
+        <div class="poster-inscription-field">
+          <label>Ma matière préférée l'an dernier</label>
+          <div class="poster-inscription-line"></div>
+        </div>
+
+        <div class="poster-inscription-field">
+          <label>Ce que j'ai envie d'apprendre cette année</label>
+          <div class="poster-inscription-line"></div>
+          <div class="poster-inscription-line"></div>
+        </div>
+
+        <div class="poster-inscription-field">
+          <label>Un truc que je veux absolument savoir faire</label>
+          <div class="poster-inscription-line"></div>
+        </div>
+
+        <div class="poster-inscription-signatures">
+          <div class="poster-inscription-signature">
+            <div class="poster-inscription-line"></div>
+            <label>Signature de l'élève</label>
+          </div>
+          <div class="poster-inscription-signature">
+            <div class="poster-inscription-line"></div>
+            <label>Signature du directeur</label>
+          </div>
+        </div>
+      </div>
+    `)
+    );
+  }
+
   if (type === "diplome") {
     root.className = "poster poster--diplome";
     const titre = params.get("titre") || "Diplôme";
