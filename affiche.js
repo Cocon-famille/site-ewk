@@ -170,39 +170,44 @@
         </div>
 
         <div class="poster-inscription-field">
-          <label>Nom de l'élève</label>
-          <div class="poster-inscription-line"></div>
+          <label for="insc-nom">Nom de l'élève</label>
+          <input id="insc-nom" class="poster-inscription-input" type="text">
         </div>
 
         <div class="poster-inscription-field">
-          <label>Niveau (IE1 à IE5)</label>
-          <div class="poster-inscription-line poster-inscription-line--short"></div>
-          <p class="poster-inscription-note">IE1 = PS ou moins &middot; IE2 = MS &middot; IE3 = CP &middot; IE4 = CE1 &middot; IE5 = CE2 et plus</p>
+          <label for="insc-niveau">Niveau</label>
+          <select id="insc-niveau" class="poster-inscription-input poster-inscription-input--short">
+            <option value="">&mdash;</option>
+            <option value="IE1">IE1 &middot; PS ou moins</option>
+            <option value="IE2">IE2 &middot; MS</option>
+            <option value="IE3">IE3 &middot; CP</option>
+            <option value="IE4">IE4 &middot; CE1</option>
+            <option value="IE5">IE5 &middot; CE2 et plus</option>
+          </select>
         </div>
 
         <div class="poster-inscription-field">
-          <label>Ma matière préférée l'an dernier</label>
-          <div class="poster-inscription-line"></div>
+          <label for="insc-matiere">Ma matière préférée l'an dernier</label>
+          <input id="insc-matiere" class="poster-inscription-input" type="text">
         </div>
 
         <div class="poster-inscription-field">
-          <label>Ce que j'ai envie d'apprendre cette année</label>
-          <div class="poster-inscription-line"></div>
-          <div class="poster-inscription-line"></div>
+          <label for="insc-envie">Ce que j'ai envie d'apprendre cette année</label>
+          <textarea id="insc-envie" class="poster-inscription-input poster-inscription-textarea" rows="2"></textarea>
         </div>
 
         <div class="poster-inscription-field">
-          <label>Un truc que je veux absolument savoir faire</label>
-          <div class="poster-inscription-line"></div>
+          <label for="insc-truc">Un truc que je veux absolument savoir faire</label>
+          <input id="insc-truc" class="poster-inscription-input" type="text">
         </div>
 
         <div class="poster-inscription-signatures">
           <div class="poster-inscription-signature">
-            <div class="poster-inscription-line"></div>
+            <input class="poster-inscription-input" type="text">
             <label>Signature de l'élève</label>
           </div>
           <div class="poster-inscription-signature">
-            <div class="poster-inscription-line"></div>
+            <input class="poster-inscription-input" type="text">
             <label>Signature du directeur</label>
           </div>
         </div>
