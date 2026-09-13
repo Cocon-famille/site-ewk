@@ -473,7 +473,17 @@
         link.target = "_blank";
         link.rel = "noopener";
         link.textContent = "Présenter";
-        row.appendChild(link);
+        const ficheProfLink = document.createElement("a");
+        ficheProfLink.className = "admin-row-delete";
+        ficheProfLink.href = `fiche-prof.html?cours=${encodeURIComponent(c.id)}`;
+        ficheProfLink.target = "_blank";
+        ficheProfLink.rel = "noopener";
+        ficheProfLink.textContent = "Fiche prof";
+        const actions = document.createElement("div");
+        actions.className = "admin-row-actions";
+        actions.appendChild(link);
+        actions.appendChild(ficheProfLink);
+        row.appendChild(actions);
         list.appendChild(row);
       });
     } catch (e) {
