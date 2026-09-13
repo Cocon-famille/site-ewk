@@ -1,10 +1,18 @@
 {
   "A": {
-    "samedi": [],
-    "dimanche": []
+    "samedi": [
+      { "heure": "10h00", "matiere": "Découverte de l'école", "couleur": "orange" }
+    ],
+    "dimanche": [
+      { "heure": "10h00", "matiere": "Compter jusqu'à 10", "couleur": "vert" }
+    ]
   },
   "B": {
-    "samedi": [],
-    "dimanche": []
+    "samedi": [
+      { "heure": "10h00", "matiere": "Les lettres et les sons", "couleur": "bleu" }
+    ],
+    "dimanche": [
+      { "heure": "10h00", "matiere": "Les jours de la semaine", "couleur": "violet" }
+    ]
   }
 }
