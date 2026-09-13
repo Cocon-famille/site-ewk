@@ -117,11 +117,29 @@
     render();
   }
 
+  function advance() {
+    if (!nextBtn.disabled) goTo(current + 1);
+  }
+
   prevBtn.addEventListener("click", () => goTo(current - 1));
   nextBtn.addEventListener("click", () => goTo(current + 1));
+
+  // Cliquer n'importe où sur la diapo avance, sauf sur un bouton
+  // (options du contrôle, boutons "C'est parti"/"Recommencer") qui
+  // gère déjà son propre clic.
+  root.addEventListener("click", (e) => {
+    if (e.target.closest("button")) return;
+    advance();
+  });
+
   document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowRight" && !nextBtn.disabled) goTo(current + 1);
+    const onButton = document.activeElement && document.activeElement.tagName === "BUTTON";
+    if (e.key === "ArrowRight") advance();
     if (e.key === "ArrowLeft" && !prevBtn.disabled) goTo(current - 1);
+    if ((e.key === " " || e.key === "Enter") && !onButton) {
+      e.preventDefault();
+      advance();
+    }
   });
 
   function html(slide) {

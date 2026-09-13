@@ -36,6 +36,43 @@
     );
   }
 
+  if (type === "fiche") {
+    root.className = "poster poster--fiche";
+    let fiche = null;
+    try {
+      const fiches = await EWK.fetchJSON("fiches.json");
+      const id = params.get("fiche");
+      fiche = id ? fiches.find((f) => f.id === id) : fiches[fiches.length - 1];
+    } catch (e) {
+      /* rien à afficher */
+    }
+    if (!fiche) {
+      root.appendChild(el(`<div class="poster-inner"><p class="poster-sub" style="color:var(--ink)">Aucune fiche à imprimer.</p></div>`));
+    } else {
+      root.appendChild(
+        el(`
+        <div class="poster-fiche">
+          <div class="poster-fiche-head">
+            <span class="disc disc--small" aria-hidden="true"></span>
+            <span class="poster-fiche-title">L'École du Weekend</span>
+            <span class="poster-fiche-ref">FICHE N&deg; ${String(fiche.id).slice(-3).padStart(3, "0")}</span>
+          </div>
+          <table class="poster-fiche-table">
+            <tbody>
+              <tr><th>Date</th><td>${fiche.date}</td></tr>
+              <tr><th>Matière</th><td>${fiche.matiere}</td></tr>
+              <tr><th>Durée</th><td>${fiche.duree}</td></tr>
+              <tr><th>Compris aujourd'hui</th><td>${fiche.compris}</td></tr>
+              <tr><th>Badge</th><td>${fiche.badge ? `<span class="poster-fiche-badge">${fiche.badge}</span>` : "&mdash;"}</td></tr>
+            </tbody>
+          </table>
+          <p class="poster-fiche-foot">L'École du Weekend &mdash; direction&nbsp;: Maël</p>
+        </div>
+      `)
+      );
+    }
+  }
+
   if (type === "badge") {
     root.className = "poster poster--badge";
     let fiche = null;
