@@ -2,6 +2,20 @@
   const badgesEl = document.getElementById("eleve-badges");
   const bulletinsEl = document.getElementById("eleve-bulletins");
   const fichesEl = document.getElementById("eleve-fiches");
+  const messagesEl = document.getElementById("eleve-messages");
+
+  try {
+    const messages = await EWK.fetchJSON("messages.json");
+    messagesEl.innerHTML = "";
+    [...messages].reverse().forEach((m) => {
+      const div = document.createElement("div");
+      div.className = "message-card";
+      div.innerHTML = `<span class="message-date">${m.date}</span><span>${m.texte}</span>`;
+      messagesEl.appendChild(div);
+    });
+  } catch (e) {
+    /* pas de message, tant pis */
+  }
 
   function badgeItem(disc, label, earned) {
     const li = document.createElement("li");

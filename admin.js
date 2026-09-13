@@ -115,7 +115,9 @@
       logoutLink.hidden = false;
       loginPanel.hidden = true;
       app.hidden = false;
-      const fiches = await Promise.all([loadFiches(), loadPrep(), loadBulletins(), loadEdt()]).then((r) => r[0]);
+      const fiches = await Promise.all([loadFiches(), loadPrep(), loadBulletins(), loadEdt(), loadMessages()]).then(
+        (r) => r[0]
+      );
       populatePosterFicheSelect(fiches);
     } catch (e) {
       token = null;
@@ -397,6 +399,48 @@
       form.reset();
       showStatus(status, "Cours ajouté. Visible sur le site dans une minute environ.");
       loadEdt();
+    } catch (err) {
+      showStatus(status, err.message, true);
+    }
+  });
+
+  // --- messages ---
+
+  async function loadMessages() {
+    const messages = await ghGet("messages.json");
+    const list = document.getElementById("message-list");
+    list.innerHTML = "";
+    [...messages].reverse().forEach((m) => {
+      const row = document.createElement("div");
+      row.className = "admin-row";
+      row.innerHTML = `<span><strong>${m.date}</strong> &mdash; ${m.texte}</span>`;
+      const del = document.createElement("button");
+      del.type = "button";
+      del.className = "admin-row-delete";
+      del.textContent = "Supprimer";
+      del.addEventListener("click", async () => {
+        const next = messages.filter((x) => x.id !== m.id);
+        await ghPut("messages.json", next, "Retire un message");
+        loadMessages();
+      });
+      row.appendChild(del);
+      list.appendChild(row);
+    });
+    return messages;
+  }
+
+  document.getElementById("message-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const status = document.getElementById("message-status");
+    try {
+      const messages = await ghGet("messages.json");
+      const fd = new FormData(form);
+      messages.push({ id: String(Date.now()), date: fd.get("date"), texte: fd.get("texte") });
+      await ghPut("messages.json", messages, `Publie un message (${fd.get("date")})`);
+      form.reset();
+      showStatus(status, "Message publié. Visible sur l'espace élève dans une minute environ.");
+      loadMessages();
     } catch (err) {
       showStatus(status, err.message, true);
     }
