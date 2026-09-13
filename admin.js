@@ -198,6 +198,7 @@
         duree: fd.get("duree"),
         compris: fd.get("compris"),
         badge: fd.get("badge") || null,
+        coursId: fd.get("coursId") || null,
       });
       await ghPut("fiches.json", fiches, `Ajoute la fiche du ${fd.get("date")}`);
       form.reset();
@@ -400,6 +401,42 @@
       showStatus(status, err.message, true);
     }
   });
+
+  // --- cours (diaporamas) ---
+
+  async function loadCours() {
+    const list = document.getElementById("cours-list");
+    try {
+      const cours = await EWK.fetchJSON("cours.json");
+
+      const ficheSelect = document.getElementById("fiche-cours-select");
+      ficheSelect.innerHTML = '<option value="">Aucun</option>';
+      cours.forEach((c) => {
+        const opt = document.createElement("option");
+        opt.value = c.id;
+        opt.textContent = c.titre;
+        ficheSelect.appendChild(opt);
+      });
+
+      list.innerHTML = "";
+      cours.forEach((c) => {
+        const row = document.createElement("div");
+        row.className = "admin-row";
+        row.innerHTML = `<span><strong>${c.titre}</strong> &mdash; ${c.matiere}</span>`;
+        const link = document.createElement("a");
+        link.className = "admin-row-delete";
+        link.href = `diaporama.html?cours=${encodeURIComponent(c.id)}`;
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.textContent = "Présenter";
+        row.appendChild(link);
+        list.appendChild(row);
+      });
+    } catch (e) {
+      list.innerHTML = '<p class="section-lede">Cours indisponibles pour le moment.</p>';
+    }
+  }
+  loadCours();
 
   boot();
 })();

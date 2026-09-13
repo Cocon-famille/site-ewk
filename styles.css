@@ -513,6 +513,17 @@ a:hover { color: var(--ink); border-bottom-color: var(--ink); }
 .diapo-badge-disc { width: 88px; height: 88px; font-size: 30px; }
 .diapo-badge-disc--big { width: 140px; height: 140px; font-size: 24px; }
 
+.diapo-visual-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+.diapo-visual-card {
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  min-width: 90px; padding: 20px 16px; border: 2px solid var(--ink); background: var(--paper-raised);
+}
+.diapo-visual-card--highlight { border-color: var(--orange); background: var(--orange); }
+.diapo-visual-card--highlight .diapo-visual-big,
+.diapo-visual-card--highlight .diapo-visual-label { color: var(--paper-raised); }
+.diapo-visual-big { font-family: var(--font-serif); font-size: 44px; line-height: 1; }
+.diapo-visual-label { font-family: var(--font-mono); font-size: 13px; letter-spacing: .04em; color: var(--ink-pale); }
+
 .diapo-options { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
 .diapo-option {
   font-family: var(--font-sans); font-size: 22px; padding: 18px 32px; min-width: 120px;

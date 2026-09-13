@@ -1,75 +1,26 @@
-(function () {
-  const SLIDES = [
-    {
-      type: "title",
-      eyebrow: "EWK &middot; Premier cours",
-      title: "Bienvenue à<br>L'École du Weekend",
-      sub: "Aujourd'hui, on découvre comment ça marche.",
-    },
-    {
-      type: "info",
-      title: "C'est quoi, cette école ?",
-      body: "Une école qui ouvre deux jours par semaine. Avec Maël. Juste pour toi.",
-    },
-    {
-      type: "rules",
-      title: "Le règlement, en 4 points",
-      items: [
-        "C'est toi qui décides s'il y a cours.",
-        "Jamais plus de 20 minutes.",
-        "Aucune question n'est bête.",
-        "Jamais de devoirs.",
-      ],
-    },
-    {
-      type: "badges",
-      title: "Les badges",
-      body: "Après chaque cours, tu gagnes un badge. Regarde :",
-    },
-    {
-      type: "info",
-      title: "Semaine A, semaine B",
-      body: "Chaque semaine a un nom&nbsp;: A ou B. Ça change ce qu'on apprend, comme au collège.",
-    },
-    {
-      type: "transition",
-      title: "Prêt pour un petit contrôle ?",
-      body: "Juste pour voir si tu as bien écouté. Pas grave si tu te trompes.",
-    },
-    {
-      type: "quiz",
-      question: "Combien de jours l'école est ouverte ?",
-      options: [{ text: "2", correct: true }, { text: "5" }, { text: "7" }],
-    },
-    {
-      type: "quiz",
-      question: "Qui décide s'il y a cours ?",
-      options: [{ text: "Toi", correct: true }, { text: "Maël" }, { text: "Personne" }],
-    },
-    {
-      type: "quiz",
-      question: "Tu as le droit de poser une question bête ?",
-      options: [{ text: "Oui", correct: true }, { text: "Non" }],
-    },
-    {
-      type: "quiz",
-      question: "Après un cours, tu gagnes...",
-      options: [{ text: "Un devoir" }, { text: "Un badge", correct: true }, { text: "Une punition" }],
-    },
-    {
-      type: "end",
-      title: "Bravo !",
-      body: "Tu as fini ton premier cours.",
-    },
-  ];
-
-  let current = 0;
-  const solved = new Set();
+(async function () {
+  const params = new URLSearchParams(location.search);
+  const coursId = params.get("cours") || "decouverte";
 
   const root = document.getElementById("diapo");
   const prevBtn = document.getElementById("diapo-prev");
   const nextBtn = document.getElementById("diapo-next");
   const counter = document.getElementById("diapo-counter");
+
+  let SLIDES = [];
+  try {
+    const cours = await EWK.fetchJSON("cours.json");
+    const found = cours.find((c) => c.id === coursId);
+    if (!found) throw new Error("cours introuvable");
+    document.title = `${found.titre} — L'École du Weekend`;
+    SLIDES = found.slides;
+  } catch (e) {
+    root.innerHTML = '<p class="diapo-sub">Ce cours est introuvable.</p>';
+    return;
+  }
+
+  let current = 0;
+  const solved = new Set();
 
   function render() {
     const slide = SLIDES[current];
@@ -156,10 +107,25 @@
         <p class="diapo-sub">${slide.body}</p>
         ${slide.type === "transition" ? '<button type="button" class="diapo-cta">C\'est parti !</button>' : ""}`;
     }
-    if (slide.type === "rules") {
+    if (slide.type === "list" || slide.type === "rules") {
       return `
         <h1 class="diapo-title">${slide.title}</h1>
         <ol class="diapo-rules">${slide.items.map((it) => `<li>${it}</li>`).join("")}</ol>`;
+    }
+    if (slide.type === "visual") {
+      return `
+        <h1 class="diapo-title">${slide.title}</h1>
+        <div class="diapo-visual-grid">
+          ${slide.items
+            .map(
+              (it) => `
+            <div class="diapo-visual-card${it.highlight ? " diapo-visual-card--highlight" : ""}">
+              <span class="diapo-visual-big">${it.big}</span>
+              ${it.label ? `<span class="diapo-visual-label">${it.label}</span>` : ""}
+            </div>`
+            )
+            .join("")}
+        </div>`;
     }
     if (slide.type === "badges") {
       return `

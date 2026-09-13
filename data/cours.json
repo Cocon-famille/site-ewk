@@ -1,0 +1,259 @@
+[
+  {
+    "id": "decouverte",
+    "titre": "Découverte de l'école",
+    "matiere": "Découverte",
+    "slides": [
+      {
+        "type": "title",
+        "eyebrow": "EWK &middot; Premier cours",
+        "title": "Bienvenue à<br>L'École du Weekend",
+        "sub": "Aujourd'hui, on découvre comment ça marche."
+      },
+      {
+        "type": "info",
+        "title": "C'est quoi, cette école ?",
+        "body": "Une école qui ouvre deux jours par semaine. Avec Maël. Juste pour toi."
+      },
+      {
+        "type": "list",
+        "title": "Le règlement, en 4 points",
+        "items": [
+          "C'est toi qui décides s'il y a cours.",
+          "Jamais plus de 20 minutes.",
+          "Aucune question n'est bête.",
+          "Jamais de devoirs."
+        ]
+      },
+      {
+        "type": "badges",
+        "title": "Les badges",
+        "body": "Après chaque cours, tu gagnes un badge. Regarde :"
+      },
+      {
+        "type": "info",
+        "title": "Semaine A, semaine B",
+        "body": "Chaque semaine a un nom&nbsp;: A ou B. Ça change ce qu'on apprend, comme au collège."
+      },
+      {
+        "type": "transition",
+        "title": "Prêt pour un petit contrôle ?",
+        "body": "Juste pour voir si tu as bien écouté. Pas grave si tu te trompes."
+      },
+      {
+        "type": "quiz",
+        "question": "Combien de jours l'école est ouverte ?",
+        "options": [{ "text": "2", "correct": true }, { "text": "5" }, { "text": "7" }]
+      },
+      {
+        "type": "quiz",
+        "question": "Qui décide s'il y a cours ?",
+        "options": [{ "text": "Toi", "correct": true }, { "text": "Maël" }, { "text": "Personne" }]
+      },
+      {
+        "type": "quiz",
+        "question": "Tu as le droit de poser une question bête ?",
+        "options": [{ "text": "Oui", "correct": true }, { "text": "Non" }]
+      },
+      {
+        "type": "quiz",
+        "question": "Après un cours, tu gagnes...",
+        "options": [{ "text": "Un devoir" }, { "text": "Un badge", "correct": true }, { "text": "Une punition" }]
+      },
+      {
+        "type": "end",
+        "title": "Bravo !",
+        "body": "Tu as fini ton premier cours."
+      }
+    ]
+  },
+  {
+    "id": "compter",
+    "titre": "Compter jusqu'à 10",
+    "matiere": "Nombres",
+    "slides": [
+      {
+        "type": "title",
+        "eyebrow": "EWK &middot; Nombres",
+        "title": "Compter<br>jusqu'à 10",
+        "sub": "Un, deux, trois... on y va !"
+      },
+      {
+        "type": "info",
+        "title": "Pourquoi compter ?",
+        "body": "Ça sert à savoir combien il y a de choses&nbsp;: de jours, de bonbons, de badges !"
+      },
+      {
+        "type": "visual",
+        "title": "Les nombres de 1 à 5",
+        "items": [
+          { "big": "1", "label": "un" },
+          { "big": "2", "label": "deux" },
+          { "big": "3", "label": "trois" },
+          { "big": "4", "label": "quatre" },
+          { "big": "5", "label": "cinq" }
+        ]
+      },
+      {
+        "type": "visual",
+        "title": "Les nombres de 6 à 10",
+        "items": [
+          { "big": "6", "label": "six" },
+          { "big": "7", "label": "sept" },
+          { "big": "8", "label": "huit" },
+          { "big": "9", "label": "neuf" },
+          { "big": "10", "label": "dix" }
+        ]
+      },
+      {
+        "type": "transition",
+        "title": "Prêt pour un petit contrôle ?",
+        "body": "On vérifie si tu sais compter."
+      },
+      {
+        "type": "quiz",
+        "question": "Combien de doigts as-tu sur une main ?",
+        "options": [{ "text": "5", "correct": true }, { "text": "10" }, { "text": "3" }]
+      },
+      {
+        "type": "quiz",
+        "question": "Quel nombre vient juste après 7 ?",
+        "options": [{ "text": "6" }, { "text": "8", "correct": true }, { "text": "9" }]
+      },
+      {
+        "type": "quiz",
+        "question": "Combien font 2 + 1 ?",
+        "options": [{ "text": "2" }, { "text": "3", "correct": true }, { "text": "4" }]
+      },
+      {
+        "type": "end",
+        "title": "Bravo !",
+        "body": "Tu sais compter jusqu'à 10."
+      }
+    ]
+  },
+  {
+    "id": "lettres",
+    "titre": "Les lettres et les sons",
+    "matiere": "Lecture",
+    "slides": [
+      {
+        "type": "title",
+        "eyebrow": "EWK &middot; Lecture",
+        "title": "Les lettres<br>et les sons",
+        "sub": "Chaque lettre a un son. On les découvre ensemble."
+      },
+      {
+        "type": "info",
+        "title": "L'alphabet",
+        "body": "Il y a 26 lettres. Elles font des sons différents, et ensemble elles font des mots."
+      },
+      {
+        "type": "visual",
+        "title": "Les voyelles",
+        "items": [
+          { "big": "A", "label": "avion" },
+          { "big": "E", "label": "école" },
+          { "big": "I", "label": "igloo" },
+          { "big": "O", "label": "orange" },
+          { "big": "U", "label": "usine" }
+        ]
+      },
+      {
+        "type": "info",
+        "title": "Les voyelles, c'est spécial",
+        "body": "On peut les chanter toutes seules, sans les autres lettres."
+      },
+      {
+        "type": "transition",
+        "title": "Prêt pour un petit contrôle ?",
+        "body": "On vérifie si tu as bien écouté."
+      },
+      {
+        "type": "quiz",
+        "question": "Quelle lettre commence le mot &laquo;&nbsp;École&nbsp;&raquo; ?",
+        "options": [{ "text": "E", "correct": true }, { "text": "A" }, { "text": "O" }]
+      },
+      {
+        "type": "quiz",
+        "question": "Combien y a-t-il de voyelles ?",
+        "options": [{ "text": "5", "correct": true }, { "text": "3" }, { "text": "10" }]
+      },
+      {
+        "type": "quiz",
+        "question": "Le mot &laquo;&nbsp;Avion&nbsp;&raquo; commence par quelle lettre ?",
+        "options": [{ "text": "A", "correct": true }, { "text": "V" }, { "text": "O" }]
+      },
+      {
+        "type": "end",
+        "title": "Bravo !",
+        "body": "Tu connais les voyelles."
+      }
+    ]
+  },
+  {
+    "id": "jours-semaine",
+    "titre": "Les jours de la semaine",
+    "matiere": "Découverte",
+    "slides": [
+      {
+        "type": "title",
+        "eyebrow": "EWK &middot; Découverte",
+        "title": "Les jours<br>de la semaine",
+        "sub": "Il y en a sept. Deux sont très spéciaux."
+      },
+      {
+        "type": "list",
+        "title": "Les 7 jours, dans l'ordre",
+        "items": ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]
+      },
+      {
+        "type": "info",
+        "title": "Le weekend",
+        "body": "Samedi et dimanche, c'est le weekend. Et c'est là qu'il y a école !"
+      },
+      {
+        "type": "visual",
+        "title": "Les jours, dans l'ordre",
+        "items": [
+          { "big": "Lun" },
+          { "big": "Mar" },
+          { "big": "Mer" },
+          { "big": "Jeu" },
+          { "big": "Ven" },
+          { "big": "Sam", "highlight": true },
+          { "big": "Dim", "highlight": true }
+        ]
+      },
+      {
+        "type": "transition",
+        "title": "Prêt pour un petit contrôle ?",
+        "body": "On vérifie si tu as bien écouté."
+      },
+      {
+        "type": "quiz",
+        "question": "Combien y a-t-il de jours dans une semaine ?",
+        "options": [{ "text": "5" }, { "text": "7", "correct": true }, { "text": "10" }]
+      },
+      {
+        "type": "quiz",
+        "question": "Quel jour vient après vendredi ?",
+        "options": [{ "text": "Dimanche" }, { "text": "Samedi", "correct": true }, { "text": "Lundi" }]
+      },
+      {
+        "type": "quiz",
+        "question": "Quels sont les deux jours d'école ?",
+        "options": [
+          { "text": "Lundi et mardi" },
+          { "text": "Samedi et dimanche", "correct": true },
+          { "text": "Mercredi et jeudi" }
+        ]
+      },
+      {
+        "type": "end",
+        "title": "Bravo !",
+        "body": "Tu connais les jours de la semaine."
+      }
+    ]
+  }
+]
