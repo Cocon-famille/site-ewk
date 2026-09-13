@@ -575,10 +575,11 @@ a:hover { color: var(--ink); border-bottom-color: var(--ink); }
 
 @media print {
   .no-print { display: none !important; }
-  .poster-body { background: none; }
+  .poster-body { background: none; page: poster; }
   .poster { margin: 0; box-shadow: none; width: 100%; height: 100vh; }
-  @page { size: A4; margin: 0; }
 }
+@page { size: A4; margin: 18mm 16mm; }
+@page poster { margin: 0; }
 
 /* Fiche prof (printable document, not a fixed poster) */
 .fp-body { margin: 0; background: var(--paper); color: var(--ink); }
@@ -596,6 +597,6 @@ a:hover { color: var(--ink); border-bottom-color: var(--ink); }
 .fp-a { color: var(--ink-pale); font-family: var(--font-mono); font-size: 13px; }
 
 @media print {
-  .fp-doc { max-width: none; padding: 0; }
+  .fp-doc { max-width: none; padding: 0 0 20px; }
   .fp-section { break-inside: avoid; }
 }
