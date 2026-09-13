@@ -73,6 +73,21 @@
     }
   }
 
+  if (type === "couverture") {
+    root.className = "poster poster--couverture";
+    root.innerHTML = `
+      <div class="poster-couverture-stripe"></div>
+      <div class="poster-inner">
+        <span class="disc poster-logo" aria-hidden="true"></span>
+        <h1 class="poster-title">L'École<br>du Weekend</h1>
+        <p class="poster-decerne">On apprend mieux<br>quand personne n'est obligé.</p>
+        <p class="poster-eyebrow" style="margin-top:24px">Classeur de cours</p>
+        <p class="poster-footer" style="margin-top:40px">Direction&nbsp;: Maël</p>
+      </div>
+      <div class="poster-couverture-stripe"></div>
+    `;
+  }
+
   if (type === "badge") {
     root.className = "poster poster--badge";
     let fiche = null;
