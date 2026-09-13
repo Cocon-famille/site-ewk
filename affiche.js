@@ -79,7 +79,6 @@
       <div class="poster-couverture-stripe"></div>
       <div class="poster-inner">
         <span class="disc poster-logo" aria-hidden="true"></span>
-        <div class="poster-couverture-sigle">EWK</div>
         <h1 class="poster-title">L'École<br>du Weekend</h1>
         <p class="poster-decerne">On apprend mieux<br>quand personne n'est obligé.</p>
         <p class="poster-eyebrow" style="margin-top:24px">Classeur de cours</p>
