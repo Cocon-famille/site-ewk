@@ -171,8 +171,13 @@
         </div>
 
         <div class="poster-inscription-field">
-          <label for="insc-nom">Nom et prénom de l'élève</label>
+          <label for="insc-nom">Nom de famille de l'élève</label>
           <input id="insc-nom" class="poster-inscription-input" type="text">
+        </div>
+
+        <div class="poster-inscription-field">
+          <label for="insc-prenom">Prénom de l'élève</label>
+          <input id="insc-prenom" class="poster-inscription-input" type="text">
         </div>
 
         <div class="poster-inscription-field">
@@ -217,9 +222,56 @@
             <label>Signature de la direction</label>
           </div>
         </div>
+
+        <div class="poster-inscription-submit no-print">
+          <button id="insc-send" type="button">Envoyer l'inscription</button>
+          <p id="insc-status" class="poster-inscription-status" hidden></p>
+        </div>
       </div>
     `)
     );
+
+    document.getElementById("insc-send").addEventListener("click", async () => {
+      const btn = document.getElementById("insc-send");
+      const status = document.getElementById("insc-status");
+      const payload = {
+        nom: document.getElementById("insc-nom").value.trim(),
+        prenom: document.getElementById("insc-prenom").value.trim(),
+        naissance: document.getElementById("insc-naissance").value.trim(),
+        niveau: document.getElementById("insc-niveau").value,
+        responsable: document.getElementById("insc-responsable").value.trim(),
+        contact: document.getElementById("insc-contact").value.trim(),
+        info: document.getElementById("insc-info").value.trim(),
+      };
+      if (!payload.nom || !payload.prenom || !payload.naissance || !payload.niveau) {
+        status.hidden = false;
+        status.classList.add("poster-inscription-status--error");
+        status.textContent = "Merci de remplir au moins le nom, le prénom, la date de naissance et le niveau.";
+        return;
+      }
+      btn.disabled = true;
+      btn.textContent = "Envoi…";
+      status.hidden = true;
+      status.classList.remove("poster-inscription-status--error");
+      try {
+        const res = await fetch("/api/classe", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data.error || `Erreur (HTTP ${res.status})`);
+        status.hidden = false;
+        status.textContent = "Inscription envoyée. Merci !";
+        btn.textContent = "Envoyé ✓";
+      } catch (err) {
+        status.hidden = false;
+        status.classList.add("poster-inscription-status--error");
+        status.textContent = `Échec de l'envoi : ${err.message}`;
+        btn.disabled = false;
+        btn.textContent = "Envoyer l'inscription";
+      }
+    });
   }
 
   if (type === "diplome") {

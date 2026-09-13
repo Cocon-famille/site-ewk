@@ -479,6 +479,14 @@ a:hover { color: var(--ink); border-bottom-color: var(--ink); }
 .poster-inscription-signatures { display: flex; gap: 40px; margin-top: 20px; }
 .poster-inscription-signature { flex: 1; }
 .poster-inscription-signature label { display: block; margin-top: 10px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-pale); }
+.poster-inscription-submit { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--chalk); }
+.poster-inscription-submit button {
+  font-family: var(--font-mono); font-size: 13px; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--paper); background: var(--orange-text); border: 0; padding: 12px 24px; cursor: pointer;
+}
+.poster-inscription-submit button:disabled { opacity: .6; cursor: default; }
+.poster-inscription-status { margin: 12px 0 0; font-size: 13px; color: var(--ink); }
+.poster-inscription-status--error { color: var(--orange-text); }
 
 @media print {
   .poster-inscription-input { outline: none; }

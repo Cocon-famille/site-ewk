@@ -455,6 +455,10 @@
 
   const NIVEAU_LABEL = { IE1: "IE1 · PS ou moins", IE2: "IE2 · MS", IE3: "IE3 · CP", IE4: "IE4 · CE1", IE5: "IE5 · CE2 et plus" };
 
+  function escapeHtml(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  }
+
   async function loadClasse() {
     const classe = await ghGet("classe.json");
     const list = document.getElementById("classe-list");
@@ -462,7 +466,14 @@
     [...classe].reverse().forEach((e) => {
       const row = document.createElement("div");
       row.className = "admin-row";
-      row.innerHTML = `<span>${e.nom} <strong>${e.prenom}</strong> &mdash; ${e.naissance} <span class="pill">${NIVEAU_LABEL[e.niveau] || e.niveau}</span></span>`;
+      const extra = [
+        e.responsable ? `Responsable : ${escapeHtml(e.responsable)}` : "",
+        e.contact ? `Contact : ${escapeHtml(e.contact)}` : "",
+        e.info ? `Infos : ${escapeHtml(e.info)}` : "",
+      ]
+        .filter(Boolean)
+        .join(" &middot; ");
+      row.innerHTML = `<span>${escapeHtml(e.nom)} <strong>${escapeHtml(e.prenom)}</strong> &mdash; ${escapeHtml(e.naissance)} <span class="pill">${NIVEAU_LABEL[e.niveau] || escapeHtml(e.niveau)}</span>${extra ? `<br><small>${extra}</small>` : ""}</span>`;
       const del = document.createElement("button");
       del.type = "button";
       del.className = "admin-row-delete";
