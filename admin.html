@@ -48,6 +48,7 @@
       <a href="#bulletins" class="admin-tab-link" data-tab="bulletins">Bulletins</a>
       <a href="#affiches" class="admin-tab-link" data-tab="affiches">Affiches</a>
       <a href="#edt" class="admin-tab-link" data-tab="edt">Emploi du temps</a>
+      <a href="#cours" class="admin-tab-link" data-tab="cours">Cours</a>
     </nav>
 
     <section data-panel="fiche" class="admin-panel">
@@ -71,6 +72,11 @@
             <option value="">Aucun</option>
             <option value="JUSTE">JUSTE</option>
             <option value="QUESTION">QUESTION</option>
+          </select>
+        </label>
+        <label>Cours associé
+          <select name="coursId" id="fiche-cours-select">
+            <option value="">Aucun</option>
           </select>
         </label>
         <button type="submit">Ajouter la fiche</button>
@@ -194,6 +200,12 @@
       <p class="admin-status" id="edt-status" hidden></p>
       <h3>Cours programmés</h3>
       <div id="edt-list" class="admin-list"></div>
+    </section>
+
+    <section data-panel="cours" class="admin-panel" hidden>
+      <h2>Cours (diaporamas)</h2>
+      <p class="section-lede">Les leçons présentables à Marin. Clique pour lancer.</p>
+      <div id="cours-list" class="admin-list"></div>
     </section>
 
   </div>
