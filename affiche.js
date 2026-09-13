@@ -5,7 +5,7 @@
 
   document.getElementById("print-btn").addEventListener("click", () => window.print());
 
-  if (/eleve\.html/.test(document.referrer)) {
+  if (type === "inscription" || /eleve\.html/.test(document.referrer)) {
     const back = document.getElementById("back-link");
     back.href = "eleve.html";
     back.textContent = "← Retour à l'espace élève";
