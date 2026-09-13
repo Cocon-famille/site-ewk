@@ -48,7 +48,7 @@ EWK.fiche = function (f) {
     <div class="course-card-head">
       <span class="disc disc--small" aria-hidden="true"></span>
       <span class="course-card-title">L'École du Weekend</span>
-      <span class="course-card-ref">FICHE N&deg; ${String(f.id).padStart(3, "0")}</span>
+      <span class="course-card-ref">FICHE N&deg; ${String(f.id).slice(-3).padStart(3, "0")}</span>
     </div>
     <table class="course-table">
       <tbody>
@@ -58,6 +58,10 @@ EWK.fiche = function (f) {
         <tr><th>Compris aujourd'hui</th><td>${f.compris}</td></tr>
         ${f.badge ? `<tr><th>Badge</th><td><span class="pill">${f.badge}</span></td></tr>` : ""}
       </tbody>
-    </table>`;
+    </table>
+    <div class="course-card-links">
+      <a class="link-arrow" href="affiche.html?type=fiche&fiche=${encodeURIComponent(f.id)}" target="_blank" rel="noopener">Imprimer &rarr;</a>
+      ${f.coursId ? `<a class="link-arrow" href="diaporama.html?cours=${encodeURIComponent(f.coursId)}">Revoir ce cours &rarr;</a>` : ""}
+    </div>`;
   return el;
 };
