@@ -115,9 +115,14 @@
       logoutLink.hidden = false;
       loginPanel.hidden = true;
       app.hidden = false;
-      const fiches = await Promise.all([loadFiches(), loadPrep(), loadBulletins(), loadEdt(), loadMessages()]).then(
-        (r) => r[0]
-      );
+      const fiches = await Promise.all([
+        loadFiches(),
+        loadPrep(),
+        loadBulletins(),
+        loadEdt(),
+        loadMessages(),
+        loadClasse(),
+      ]).then((r) => r[0]);
       populatePosterFicheSelect(fiches);
     } catch (e) {
       token = null;
@@ -441,6 +446,56 @@
       form.reset();
       showStatus(status, "Message publié. Visible sur l'espace élève dans une minute environ.");
       loadMessages();
+    } catch (err) {
+      showStatus(status, err.message, true);
+    }
+  });
+
+  // --- classe ---
+
+  const NIVEAU_LABEL = { IE1: "IE1 · PS ou moins", IE2: "IE2 · MS", IE3: "IE3 · CP", IE4: "IE4 · CE1", IE5: "IE5 · CE2 et plus" };
+
+  async function loadClasse() {
+    const classe = await ghGet("classe.json");
+    const list = document.getElementById("classe-list");
+    list.innerHTML = "";
+    [...classe].reverse().forEach((e) => {
+      const row = document.createElement("div");
+      row.className = "admin-row";
+      row.innerHTML = `<span>${e.nom} <strong>${e.prenom}</strong> &mdash; ${e.naissance} <span class="pill">${NIVEAU_LABEL[e.niveau] || e.niveau}</span></span>`;
+      const del = document.createElement("button");
+      del.type = "button";
+      del.className = "admin-row-delete";
+      del.textContent = "Supprimer";
+      del.addEventListener("click", async () => {
+        const next = classe.filter((x) => x.id !== e.id);
+        await ghPut("classe.json", next, `Retire ${e.prenom} ${e.nom} de la classe`);
+        loadClasse();
+      });
+      row.appendChild(del);
+      list.appendChild(row);
+    });
+    return classe;
+  }
+
+  document.getElementById("classe-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const status = document.getElementById("classe-status");
+    try {
+      const classe = await ghGet("classe.json");
+      const fd = new FormData(form);
+      classe.push({
+        id: String(Date.now()),
+        nom: fd.get("nom"),
+        prenom: fd.get("prenom"),
+        naissance: fd.get("naissance"),
+        niveau: fd.get("niveau"),
+      });
+      await ghPut("classe.json", classe, `Ajoute ${fd.get("prenom")} ${fd.get("nom")} à la classe`);
+      form.reset();
+      showStatus(status, "Élève ajouté à la classe.");
+      loadClasse();
     } catch (err) {
       showStatus(status, err.message, true);
     }
