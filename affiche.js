@@ -166,12 +166,18 @@
           <div>
             <div class="poster-inscription-title">L'École du Weekend</div>
             <div class="poster-inscription-sub">Fiche d'inscription &mdash; Rentrée 2026-2027</div>
+            <div class="poster-inscription-sub">À remplir par le responsable légal</div>
           </div>
         </div>
 
         <div class="poster-inscription-field">
-          <label for="insc-nom">Nom de l'élève</label>
+          <label for="insc-nom">Nom et prénom de l'élève</label>
           <input id="insc-nom" class="poster-inscription-input" type="text">
+        </div>
+
+        <div class="poster-inscription-field">
+          <label for="insc-naissance">Date de naissance</label>
+          <input id="insc-naissance" class="poster-inscription-input poster-inscription-input--short" type="date">
         </div>
 
         <div class="poster-inscription-field">
@@ -187,28 +193,28 @@
         </div>
 
         <div class="poster-inscription-field">
-          <label for="insc-matiere">Ma matière préférée l'an dernier</label>
-          <input id="insc-matiere" class="poster-inscription-input" type="text">
+          <label for="insc-responsable">Nom du responsable légal</label>
+          <input id="insc-responsable" class="poster-inscription-input" type="text">
         </div>
 
         <div class="poster-inscription-field">
-          <label for="insc-envie">Ce que j'ai envie d'apprendre cette année</label>
-          <textarea id="insc-envie" class="poster-inscription-input poster-inscription-textarea" rows="2"></textarea>
+          <label for="insc-contact">Téléphone ou e-mail de contact</label>
+          <input id="insc-contact" class="poster-inscription-input" type="text">
         </div>
 
         <div class="poster-inscription-field">
-          <label for="insc-truc">Un truc que je veux absolument savoir faire</label>
-          <input id="insc-truc" class="poster-inscription-input" type="text">
+          <label for="insc-info">Informations utiles (allergies, points d'attention)</label>
+          <textarea id="insc-info" class="poster-inscription-input poster-inscription-textarea" rows="2"></textarea>
         </div>
 
         <div class="poster-inscription-signatures">
           <div class="poster-inscription-signature">
             <input class="poster-inscription-input" type="text">
-            <label>Signature de l'élève</label>
+            <label>Signature du responsable légal</label>
           </div>
           <div class="poster-inscription-signature">
             <input class="poster-inscription-input" type="text">
-            <label>Signature du directeur</label>
+            <label>Signature de la direction</label>
           </div>
         </div>
       </div>
