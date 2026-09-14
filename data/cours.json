@@ -40,11 +40,31 @@
         "title": "Les badges, mode d'emploi",
         "body": "Après chaque cours, tu gagnes un badge. Il y en a plusieurs sortes :",
         "items": [
-          { "cls": "badge-disc--outline", "big": "1", "label": "Premier cours : dès ta première fois." },
-          { "cls": "badge-disc--outline", "big": "5", "label": "Habitué : après 5 cours." },
-          { "cls": "badge-disc--orange", "big": "10", "label": "Palier orange : après 10 cours." },
-          { "cls": "badge-disc--ink", "big": "JUSTE", "label": "Quand tu réussis un exercice tout seul." },
-          { "cls": "badge-disc--dashed", "big": "?", "label": "Quand tu poses une colle au prof." }
+          {
+            "cls": "badge-disc--outline",
+            "big": "1",
+            "label": "Premier cours : dès ta première fois."
+          },
+          {
+            "cls": "badge-disc--outline",
+            "big": "5",
+            "label": "Habitué : après 5 cours."
+          },
+          {
+            "cls": "badge-disc--orange",
+            "big": "10",
+            "label": "Palier orange : après 10 cours."
+          },
+          {
+            "cls": "badge-disc--ink",
+            "big": "JUSTE",
+            "label": "Quand tu réussis un exercice tout seul."
+          },
+          {
+            "cls": "badge-disc--dashed",
+            "big": "?",
+            "label": "Quand tu poses une colle au prof."
+          }
         ]
       },
       {
@@ -60,27 +80,76 @@
       {
         "type": "quiz",
         "question": "Combien de jours l'école est ouverte ?",
-        "options": [{ "text": "2", "correct": true }, { "text": "5" }, { "text": "7" }]
+        "options": [
+          {
+            "text": "2",
+            "correct": true
+          },
+          {
+            "text": "5"
+          },
+          {
+            "text": "7"
+          }
+        ]
       },
       {
         "type": "quiz",
         "question": "Qui décide s'il y a cours ?",
-        "options": [{ "text": "Toi", "correct": true }, { "text": "Maël" }, { "text": "Personne" }]
+        "options": [
+          {
+            "text": "Toi",
+            "correct": true
+          },
+          {
+            "text": "Maël"
+          },
+          {
+            "text": "Personne"
+          }
+        ]
       },
       {
         "type": "quiz",
         "question": "Tu as le droit de poser une question bête ?",
-        "options": [{ "text": "Oui", "correct": true }, { "text": "Non" }]
+        "options": [
+          {
+            "text": "Oui",
+            "correct": true
+          },
+          {
+            "text": "Non"
+          }
+        ]
       },
       {
         "type": "quiz",
         "question": "Après un cours, tu gagnes...",
-        "options": [{ "text": "Un devoir" }, { "text": "Un badge", "correct": true }, { "text": "Une punition" }]
+        "options": [
+          {
+            "text": "Un devoir"
+          },
+          {
+            "text": "Un badge",
+            "correct": true
+          },
+          {
+            "text": "Une punition"
+          }
+        ]
       },
       {
         "type": "quiz",
         "question": "Est-ce qu'il y a des devoirs à faire après ?",
-        "options": [{ "text": "Oui" }, { "text": "Non", "correct": true }]
+        "options": [
+          {
+            "text": "Oui"
+          },
+          {
+            "text": "Non",
+            "correct": true
+          }
+        ]
       },
       {
         "type": "end",
@@ -109,22 +178,52 @@
         "type": "visual",
         "title": "Les nombres de 1 à 5",
         "items": [
-          { "big": "1", "label": "un" },
-          { "big": "2", "label": "deux" },
-          { "big": "3", "label": "trois" },
-          { "big": "4", "label": "quatre" },
-          { "big": "5", "label": "cinq" }
+          {
+            "big": "1",
+            "label": "un"
+          },
+          {
+            "big": "2",
+            "label": "deux"
+          },
+          {
+            "big": "3",
+            "label": "trois"
+          },
+          {
+            "big": "4",
+            "label": "quatre"
+          },
+          {
+            "big": "5",
+            "label": "cinq"
+          }
         ]
       },
       {
         "type": "visual",
         "title": "Les nombres de 6 à 10",
         "items": [
-          { "big": "6", "label": "six" },
-          { "big": "7", "label": "sept" },
-          { "big": "8", "label": "huit" },
-          { "big": "9", "label": "neuf" },
-          { "big": "10", "label": "dix" }
+          {
+            "big": "6",
+            "label": "six"
+          },
+          {
+            "big": "7",
+            "label": "sept"
+          },
+          {
+            "big": "8",
+            "label": "huit"
+          },
+          {
+            "big": "9",
+            "label": "neuf"
+          },
+          {
+            "big": "10",
+            "label": "dix"
+          }
         ]
       },
       {
@@ -136,11 +235,25 @@
         "type": "visual",
         "title": "3 + 2, ça fait combien ?",
         "items": [
-          { "big": "3", "label": "samedi" },
-          { "big": "+" },
-          { "big": "2", "label": "dimanche" },
-          { "big": "=" },
-          { "big": "5", "label": "en tout", "highlight": true }
+          {
+            "big": "3",
+            "label": "samedi"
+          },
+          {
+            "big": "+"
+          },
+          {
+            "big": "2",
+            "label": "dimanche"
+          },
+          {
+            "big": "="
+          },
+          {
+            "big": "5",
+            "label": "en tout",
+            "highlight": true
+          }
         ]
       },
       {
@@ -151,27 +264,82 @@
       {
         "type": "quiz",
         "question": "Combien de doigts as-tu sur une main ?",
-        "options": [{ "text": "5", "correct": true }, { "text": "10" }, { "text": "3" }]
+        "options": [
+          {
+            "text": "5",
+            "correct": true
+          },
+          {
+            "text": "10"
+          },
+          {
+            "text": "3"
+          }
+        ]
       },
       {
         "type": "quiz",
         "question": "Quel nombre vient juste après 7 ?",
-        "options": [{ "text": "6" }, { "text": "8", "correct": true }, { "text": "9" }]
+        "options": [
+          {
+            "text": "6"
+          },
+          {
+            "text": "8",
+            "correct": true
+          },
+          {
+            "text": "9"
+          }
+        ]
       },
       {
         "type": "quiz",
         "question": "Combien font 2 + 1 ?",
-        "options": [{ "text": "2" }, { "text": "3", "correct": true }, { "text": "4" }]
+        "options": [
+          {
+            "text": "2"
+          },
+          {
+            "text": "3",
+            "correct": true
+          },
+          {
+            "text": "4"
+          }
+        ]
       },
       {
         "type": "quiz",
         "question": "Combien font 4 + 1 ?",
-        "options": [{ "text": "4" }, { "text": "5", "correct": true }, { "text": "6" }]
+        "options": [
+          {
+            "text": "4"
+          },
+          {
+            "text": "5",
+            "correct": true
+          },
+          {
+            "text": "6"
+          }
+        ]
       },
       {
         "type": "quiz",
         "question": "Quel nombre vient juste avant 10 ?",
-        "options": [{ "text": "8" }, { "text": "9", "correct": true }, { "text": "11" }]
+        "options": [
+          {
+            "text": "8"
+          },
+          {
+            "text": "9",
+            "correct": true
+          },
+          {
+            "text": "11"
+          }
+        ]
       },
       {
         "type": "end",
@@ -200,11 +368,26 @@
         "type": "visual",
         "title": "Les voyelles",
         "items": [
-          { "big": "A", "label": "avion" },
-          { "big": "E", "label": "école" },
-          { "big": "I", "label": "igloo" },
-          { "big": "O", "label": "orange" },
-          { "big": "U", "label": "usine" }
+          {
+            "big": "A",
+            "label": "avion"
+          },
+          {
+            "big": "E",
+            "label": "école"
+          },
+          {
+            "big": "I",
+            "label": "igloo"
+          },
+          {
+            "big": "O",
+            "label": "orange"
+          },
+          {
+            "big": "U",
+            "label": "usine"
+          }
         ]
       },
       {
@@ -221,11 +404,23 @@
         "type": "visual",
         "title": "Ton prénom, lettre par lettre",
         "items": [
-          { "big": "M" },
-          { "big": "A", "highlight": true },
-          { "big": "R" },
-          { "big": "I", "highlight": true },
-          { "big": "N" }
+          {
+            "big": "M"
+          },
+          {
+            "big": "A",
+            "highlight": true
+          },
+          {
+            "big": "R"
+          },
+          {
+            "big": "I",
+            "highlight": true
+          },
+          {
+            "big": "N"
+          }
         ]
       },
       {
@@ -241,22 +436,66 @@
       {
         "type": "quiz",
         "question": "Quelle lettre commence le mot &laquo;&nbsp;École&nbsp;&raquo; ?",
-        "options": [{ "text": "E", "correct": true }, { "text": "A" }, { "text": "O" }]
+        "options": [
+          {
+            "text": "E",
+            "correct": true
+          },
+          {
+            "text": "A"
+          },
+          {
+            "text": "O"
+          }
+        ]
       },
       {
         "type": "quiz",
         "question": "Combien y a-t-il de voyelles ?",
-        "options": [{ "text": "5", "correct": true }, { "text": "3" }, { "text": "10" }]
+        "options": [
+          {
+            "text": "5",
+            "correct": true
+          },
+          {
+            "text": "3"
+          },
+          {
+            "text": "10"
+          }
+        ]
       },
       {
         "type": "quiz",
         "question": "Le mot &laquo;&nbsp;Avion&nbsp;&raquo; commence par quelle lettre ?",
-        "options": [{ "text": "A", "correct": true }, { "text": "V" }, { "text": "O" }]
+        "options": [
+          {
+            "text": "A",
+            "correct": true
+          },
+          {
+            "text": "V"
+          },
+          {
+            "text": "O"
+          }
+        ]
       },
       {
         "type": "quiz",
         "question": "Combien de voyelles y a-t-il dans &laquo;&nbsp;MARIN&nbsp;&raquo; ?",
-        "options": [{ "text": "1" }, { "text": "2", "correct": true }, { "text": "3" }]
+        "options": [
+          {
+            "text": "1"
+          },
+          {
+            "text": "2",
+            "correct": true
+          },
+          {
+            "text": "3"
+          }
+        ]
       },
       {
         "type": "end",
@@ -279,7 +518,15 @@
       {
         "type": "list",
         "title": "Les 7 jours, dans l'ordre",
-        "items": ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]
+        "items": [
+          "Lundi",
+          "Mardi",
+          "Mercredi",
+          "Jeudi",
+          "Vendredi",
+          "Samedi",
+          "Dimanche"
+        ]
       },
       {
         "type": "info",
@@ -290,13 +537,29 @@
         "type": "visual",
         "title": "Les jours, dans l'ordre",
         "items": [
-          { "big": "Lun" },
-          { "big": "Mar" },
-          { "big": "Mer" },
-          { "big": "Jeu" },
-          { "big": "Ven" },
-          { "big": "Sam", "highlight": true },
-          { "big": "Dim", "highlight": true }
+          {
+            "big": "Lun"
+          },
+          {
+            "big": "Mar"
+          },
+          {
+            "big": "Mer"
+          },
+          {
+            "big": "Jeu"
+          },
+          {
+            "big": "Ven"
+          },
+          {
+            "big": "Sam",
+            "highlight": true
+          },
+          {
+            "big": "Dim",
+            "highlight": true
+          }
         ]
       },
       {
@@ -317,31 +580,365 @@
       {
         "type": "quiz",
         "question": "Combien y a-t-il de jours dans une semaine ?",
-        "options": [{ "text": "5" }, { "text": "7", "correct": true }, { "text": "10" }]
+        "options": [
+          {
+            "text": "5"
+          },
+          {
+            "text": "7",
+            "correct": true
+          },
+          {
+            "text": "10"
+          }
+        ]
       },
       {
         "type": "quiz",
         "question": "Quel jour vient après vendredi ?",
-        "options": [{ "text": "Dimanche" }, { "text": "Samedi", "correct": true }, { "text": "Lundi" }]
+        "options": [
+          {
+            "text": "Dimanche"
+          },
+          {
+            "text": "Samedi",
+            "correct": true
+          },
+          {
+            "text": "Lundi"
+          }
+        ]
       },
       {
         "type": "quiz",
         "question": "Quels sont les deux jours d'école ?",
         "options": [
-          { "text": "Lundi et mardi" },
-          { "text": "Samedi et dimanche", "correct": true },
-          { "text": "Mercredi et jeudi" }
+          {
+            "text": "Lundi et mardi"
+          },
+          {
+            "text": "Samedi et dimanche",
+            "correct": true
+          },
+          {
+            "text": "Mercredi et jeudi"
+          }
         ]
       },
       {
         "type": "quiz",
         "question": "Quel jour vient juste après dimanche ?",
-        "options": [{ "text": "Samedi" }, { "text": "Lundi", "correct": true }, { "text": "Mardi" }]
+        "options": [
+          {
+            "text": "Samedi"
+          },
+          {
+            "text": "Lundi",
+            "correct": true
+          },
+          {
+            "text": "Mardi"
+          }
+        ]
       },
       {
         "type": "end",
         "title": "Bravo !",
         "body": "Tu connais les jours de la semaine."
+      }
+    ]
+  },
+  {
+    "id": "addition-colonnes",
+    "titre": "Additionner en colonnes",
+    "matiere": "Nombres",
+    "slides": [
+      {
+        "type": "title",
+        "eyebrow": "EWK &middot; Nombres",
+        "title": "Additionner<br>en colonnes",
+        "sub": "Comme à la grande école, avec des dizaines."
+      },
+      {
+        "type": "info",
+        "title": "Dizaines et unités",
+        "body": "23, c'est 2 dizaines et 3 unités. La dizaine, c'est le chiffre de gauche&nbsp;; l'unité, c'est celui de droite."
+      },
+      {
+        "type": "visual",
+        "title": "23, ça fait quoi ?",
+        "items": [
+          {
+            "big": "2",
+            "label": "dizaines"
+          },
+          {
+            "big": "3",
+            "label": "unités"
+          }
+        ]
+      },
+      {
+        "type": "info",
+        "title": "Comment poser une addition",
+        "body": "On écrit les unités sous les unités, et les dizaines sous les dizaines. On additionne d'abord les unités, puis les dizaines."
+      },
+      {
+        "type": "visual",
+        "title": "23 + 15",
+        "items": [
+          {
+            "big": "23"
+          },
+          {
+            "big": "+"
+          },
+          {
+            "big": "15"
+          },
+          {
+            "big": "="
+          },
+          {
+            "big": "38",
+            "highlight": true
+          }
+        ]
+      },
+      {
+        "type": "info",
+        "title": "Le détail du calcul",
+        "body": "Unités&nbsp;: 3 + 5 = 8. Dizaines&nbsp;: 2 + 1 = 3. Résultat&nbsp;: 38."
+      },
+      {
+        "type": "info",
+        "title": "Soustraire, c'est pareil",
+        "body": "45 - 23&nbsp;: on soustrait d'abord les unités (5 - 3 = 2), puis les dizaines (4 - 2 = 2). Résultat&nbsp;: 22."
+      },
+      {
+        "type": "visual",
+        "title": "45 - 23",
+        "items": [
+          {
+            "big": "45"
+          },
+          {
+            "big": "-"
+          },
+          {
+            "big": "23"
+          },
+          {
+            "big": "="
+          },
+          {
+            "big": "22",
+            "highlight": true
+          }
+        ]
+      },
+      {
+        "type": "transition",
+        "title": "Prêt pour un petit contrôle ?",
+        "body": "On vérifie si tu sais additionner et soustraire en colonnes."
+      },
+      {
+        "type": "quiz",
+        "question": "Combien font 23 + 15 ?",
+        "options": [
+          {
+            "text": "38",
+            "correct": true
+          },
+          {
+            "text": "35"
+          },
+          {
+            "text": "48"
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "question": "Combien font 32 + 14 ?",
+        "options": [
+          {
+            "text": "46",
+            "correct": true
+          },
+          {
+            "text": "42"
+          },
+          {
+            "text": "36"
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "question": "Combien font 45 - 23 ?",
+        "options": [
+          {
+            "text": "22",
+            "correct": true
+          },
+          {
+            "text": "68"
+          },
+          {
+            "text": "12"
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "question": "Dans le nombre 47, combien y a-t-il de dizaines ?",
+        "options": [
+          {
+            "text": "4",
+            "correct": true
+          },
+          {
+            "text": "7"
+          },
+          {
+            "text": "47"
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "question": "Combien font 56 - 34 ?",
+        "options": [
+          {
+            "text": "22",
+            "correct": true
+          },
+          {
+            "text": "90"
+          },
+          {
+            "text": "12"
+          }
+        ]
+      },
+      {
+        "type": "end",
+        "title": "Bravo !",
+        "body": "Tu sais additionner et soustraire des nombres à deux chiffres."
+      }
+    ]
+  },
+  {
+    "id": "lecture-comprehension",
+    "titre": "Bien lire, bien comprendre",
+    "matiere": "Lecture",
+    "slides": [
+      {
+        "type": "title",
+        "eyebrow": "EWK &middot; Lecture",
+        "title": "Bien lire,<br>bien comprendre",
+        "sub": "Une histoire, puis des questions pour vérifier."
+      },
+      {
+        "type": "info",
+        "title": "Le texte du jour",
+        "body": "Ce samedi matin, Marin arrive à l'école du weekend avec un grand sourire. Il porte sa chemise préférée, celle avec des étoiles brodées. Dans son sac à dos, il a rangé un cahier tout neuf et un crayon taillé. Quand il pousse la porte, Maël l'accueille en bâillant&nbsp;: il s'est levé tôt pour préparer la leçon. «&nbsp;Pile à l'heure&nbsp;!&nbsp;» dit-il, un grand sourire aux lèvres."
+      },
+      {
+        "type": "info",
+        "title": "Un mot nouveau",
+        "body": "Des étoiles «&nbsp;brodées&nbsp;», ça veut dire cousues en dessin sur le tissu, fil par fil&nbsp;: pas peintes, pas collées."
+      },
+      {
+        "type": "transition",
+        "title": "Prêt pour les questions ?",
+        "body": "On vérifie si tu as bien compris, même ce qui n'est pas écrit noir sur blanc."
+      },
+      {
+        "type": "quiz",
+        "question": "Quel jour de la semaine se passe l'histoire ?",
+        "options": [
+          {
+            "text": "Samedi",
+            "correct": true
+          },
+          {
+            "text": "Dimanche"
+          },
+          {
+            "text": "Mercredi"
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "question": "Qu'est-ce que Marin a rangé dans son sac ?",
+        "options": [
+          {
+            "text": "Un cahier neuf et un crayon taillé",
+            "correct": true
+          },
+          {
+            "text": "Un livre et une gomme"
+          },
+          {
+            "text": "Un goûter"
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "question": "Dans le texte, que veut dire « brodées » ?",
+        "options": [
+          {
+            "text": "Cousues en dessin sur le tissu",
+            "correct": true
+          },
+          {
+            "text": "Peintes avec un pinceau"
+          },
+          {
+            "text": "Collées avec de la colle"
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "question": "Pourquoi Maël bâille-t-il ?",
+        "options": [
+          {
+            "text": "Parce qu'il s'est levé tôt pour préparer la leçon",
+            "correct": true
+          },
+          {
+            "text": "Parce qu'il s'ennuie"
+          },
+          {
+            "text": "Parce qu'il a couru"
+          }
+        ]
+      },
+      {
+        "type": "quiz",
+        "question": "Comment sait-on que Maël est content de voir Marin ?",
+        "options": [
+          {
+            "text": "Il a un grand sourire aux lèvres",
+            "correct": true
+          },
+          {
+            "text": "Il ferme la porte"
+          },
+          {
+            "text": "Il range son cahier"
+          }
+        ]
+      },
+      {
+        "type": "end",
+        "title": "Bravo !",
+        "body": "Tu sais repérer les détails d'une histoire et deviner ce qui n'est pas écrit."
       }
     ]
   }
