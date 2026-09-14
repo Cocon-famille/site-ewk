@@ -37,6 +37,13 @@
     </div>
   `);
 
+  if (cours.competences && cours.competences.length) {
+    section(`
+      <h2>Compétences visées</h2>
+      <ul>${cours.competences.map((c) => `<li>${c}</li>`).join("")}</ul>
+    `);
+  }
+
   cours.slides.forEach((slide) => {
     if (slide.type === "title" || slide.type === "end") return;
 

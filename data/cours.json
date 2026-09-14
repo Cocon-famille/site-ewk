@@ -156,6 +156,10 @@
         "title": "Bravo !",
         "body": "Tu as fini ton premier cours."
       }
+    ],
+    "competences": [
+      "Comprendre le fonctionnement et les règles d'une nouvelle activité.",
+      "Se repérer dans une organisation (les jours, la durée, les badges)."
     ]
   },
   {
@@ -346,6 +350,10 @@
         "title": "Bravo !",
         "body": "Tu sais compter jusqu'à 10."
       }
+    ],
+    "competences": [
+      "Connaitre la suite écrite et orale des nombres jusqu'à dix (Nombres et calcul, CP).",
+      "Comprendre le sens de l'addition (Les quatre opérations, CP)."
     ]
   },
   {
@@ -502,6 +510,10 @@
         "title": "Bravo !",
         "body": "Tu connais les voyelles, et même celles de ton prénom."
       }
+    ],
+    "competences": [
+      "Décoder et encoder des correspondances graphophonémiques régulières (Lecture, CP).",
+      "Déchiffrer des syllabes puis des mots (Lecture, CP)."
     ]
   },
   {
@@ -646,6 +658,10 @@
         "title": "Bravo !",
         "body": "Tu connais les jours de la semaine."
       }
+    ],
+    "competences": [
+      "Se repérer dans une suite ordonnée (les jours de la semaine).",
+      "Utiliser le vocabulaire du temps qui passe."
     ]
   },
   {
@@ -827,6 +843,10 @@
         "title": "Bravo !",
         "body": "Tu sais additionner et soustraire des nombres à deux chiffres."
       }
+    ],
+    "competences": [
+      "Connaitre la valeur des chiffres en fonction de leur position, dizaines et unités (Nombres et calcul, CP-CE1).",
+      "Poser et effectuer des additions et des soustractions en colonnes (Les quatre opérations, CE1)."
     ]
   },
   {
@@ -940,6 +960,11 @@
         "title": "Bravo !",
         "body": "Tu sais repérer les détails d'une histoire et deviner ce qui n'est pas écrit."
       }
+    ],
+    "competences": [
+      "Identifier les mots inconnus dans un texte et chercher leur sens (Comprendre un texte, CE1).",
+      "Comprendre ce qui est implicite dans un texte, inférences simples (Comprendre un texte, CE1).",
+      "Lire et comprendre en autonomie un texte narratif (Comprendre un texte, CE1)."
     ]
   }
 ]
