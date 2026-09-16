@@ -512,6 +512,31 @@
     }
   });
 
+  document.getElementById("classe-export").addEventListener("click", async () => {
+    const status = document.getElementById("classe-status");
+    try {
+      const classe = await ghGet("classe.json");
+      const rows = [
+        ["Nom de famille, Prénom", "Date de naissance", "Niveau", "Responsable légal", "Contact", "Infos utiles"],
+        ...classe.map((e) => [
+          `${e.nom}, ${e.prenom}`,
+          e.naissance,
+          NIVEAU_LABEL[e.niveau] || e.niveau,
+          e.responsable || "",
+          e.contact || "",
+          e.info || "",
+        ]),
+      ];
+      const sheet = XLSX.utils.aoa_to_sheet(rows);
+      sheet["!cols"] = [{ wch: 28 }, { wch: 16 }, { wch: 16 }, { wch: 22 }, { wch: 26 }, { wch: 30 }];
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, sheet, "Classe 2026-2027");
+      XLSX.writeFile(wb, "classe-2026-2027.xlsx");
+    } catch (err) {
+      showStatus(status, err.message, true);
+    }
+  });
+
   // --- cours (diaporamas) ---
 
   async function loadCours() {
