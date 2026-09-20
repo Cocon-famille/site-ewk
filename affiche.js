@@ -156,6 +156,26 @@
     );
   }
 
+  if (type === "fournitures") {
+    root.className = "poster poster--reglement";
+    root.appendChild(
+      el(`
+      <div class="poster-inner">
+        <span class="disc poster-logo" aria-hidden="true"></span>
+        <p class="poster-eyebrow">Rentrée 2026-2027</p>
+        <h1 class="poster-title">Liste de<br>fournitures</h1>
+        <ol class="poster-rules">
+          <li><span class="poster-rule-num">1</span>Un cahier à plusieurs compartiments (le petit plus que le directeur adore).</li>
+          <li><span class="poster-rule-num">2</span>Un crayon, une gomme, et une trousse pour les ranger.</li>
+          <li><span class="poster-rule-num">3</span>Un classeur, pour garder les fiches.</li>
+          <li><span class="poster-rule-num">4</span>Un goûter, pour la pause entre deux exercices.</li>
+          <li><span class="poster-rule-num">5</span>Une bonne humeur. Celle-là, elle est obligatoire.</li>
+        </ol>
+      </div>
+    `)
+    );
+  }
+
   if (type === "inscription") {
     root.className = "poster poster--inscription";
     root.appendChild(
