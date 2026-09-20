@@ -58,21 +58,46 @@
     bulletinsEl.innerHTML = '<p class="section-lede">Bulletins indisponibles pour le moment.</p>';
   }
 
+  const NIVEAU_SYMBOL = { 1: "①", 2: "②", 3: "③", 4: "④" };
+
   function bulletinCard(b) {
     const el = document.createElement("div");
     el.className = "bulletin-card";
+    const matieres = b.matieres || [];
     el.innerHTML = `
       <div class="bulletin-card-head">
         <span class="disc disc--small" aria-hidden="true"></span>
         <div>
           <div class="bulletin-card-title">Bulletin &mdash; ${b.periode}</div>
-          <div class="bulletin-card-matieres">${(b.matieres || []).join(" · ")}</div>
+          <div class="bulletin-card-matieres">${matieres.map((m) => m.nom).join(" · ")}</div>
         </div>
       </div>
-      ${b.points_forts ? `<p class="bulletin-points">${b.points_forts}</p>` : ""}
+      ${
+        matieres.length
+          ? `<table class="bulletin-matieres-table">
+              <tbody>
+                ${matieres
+                  .map(
+                    (m) => `
+                  <tr>
+                    <th>${m.nom}</th>
+                    <td class="bulletin-matieres-niveau">${NIVEAU_SYMBOL[m.niveau] || ""}</td>
+                    <td>${m.appreciation || ""}</td>
+                  </tr>
+                `
+                  )
+                  .join("")}
+              </tbody>
+            </table>
+            <p class="bulletin-legend">&#9312; Non atteint &middot; &#9313; Partiellement atteint &middot; &#9314; Atteint &middot; &#9315; Excellente maîtrise</p>`
+          : ""
+      }
       ${(b.badges || []).length ? `<div class="bulletin-badges">${b.badges.map((x) => `<span class="pill">${x}</span>`).join(" ")}</div>` : ""}
-      ${b.mot ? `<p class="bulletin-mot">&laquo;&nbsp;${b.mot}&nbsp;&raquo;</p>` : ""}
-      ${b.attachment ? `<a class="link-arrow" href="${b.attachment}" target="_blank" rel="noopener">Voir le bulletin en PDF &rarr;</a>` : ""}
+      ${b.mot ? `<p class="bulletin-mot-label">Commentaire général</p><p class="bulletin-mot">&laquo;&nbsp;${b.mot}&nbsp;&raquo;</p>` : ""}
+      <p class="bulletin-links">
+        <a class="link-arrow" href="bulletin.html?bulletin=${encodeURIComponent(b.id)}" target="_blank" rel="noopener">Version imprimable &rarr;</a>
+        ${b.attachment ? `<a class="link-arrow" href="${b.attachment}" target="_blank" rel="noopener">Voir le PDF envoyé &rarr;</a>` : ""}
+      </p>
     `;
     return el;
   }

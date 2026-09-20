@@ -258,6 +258,52 @@
 
   // --- bulletins ---
 
+  function matiereRow(nom = "", niveau = "3", appreciation = "") {
+    const row = document.createElement("div");
+    row.className = "bulletin-matiere-row";
+    row.innerHTML = `
+      <input type="text" class="bulletin-matiere-nom" list="matieres-datalist" placeholder="Matière" value="${nom}">
+      <select class="bulletin-matiere-niveau">
+        <option value="1">&#9312; Non atteint</option>
+        <option value="2">&#9313; Partiellement atteint</option>
+        <option value="3">&#9314; Atteint</option>
+        <option value="4">&#9315; Excellente maîtrise</option>
+      </select>
+      <textarea class="bulletin-matiere-appreciation" rows="2" placeholder="Appréciation"></textarea>
+      <button type="button" class="bulletin-matiere-remove" aria-label="Retirer cette matière">&times;</button>
+    `;
+    row.querySelector(".bulletin-matiere-niveau").value = niveau;
+    row.querySelector(".bulletin-matiere-appreciation").value = appreciation;
+    row.querySelector(".bulletin-matiere-remove").addEventListener("click", () => row.remove());
+    return row;
+  }
+
+  function resetMatieresRows() {
+    const rows = document.getElementById("bulletin-matieres-rows");
+    rows.innerHTML = "";
+    rows.appendChild(matiereRow());
+  }
+
+  document.getElementById("bulletin-add-matiere").addEventListener("click", () => {
+    document.getElementById("bulletin-matieres-rows").appendChild(matiereRow());
+  });
+  resetMatieresRows();
+
+  async function populateMatieresDatalist() {
+    try {
+      const [cours, edt] = await Promise.all([EWK.fetchJSON("cours.json"), EWK.fetchJSON("edt.json")]);
+      const set = new Set();
+      cours.forEach((c) => c.matiere && set.add(c.matiere));
+      ["A", "B"].forEach((s) =>
+        ["samedi", "dimanche"].forEach((j) => (edt[s]?.[j] || []).forEach((c) => c.matiere && set.add(c.matiere)))
+      );
+      document.getElementById("matieres-datalist").innerHTML = [...set].map((m) => `<option value="${m}">`).join("");
+    } catch (e) {
+      /* pas grave si indisponible */
+    }
+  }
+  populateMatieresDatalist();
+
   async function loadBulletins() {
     const bulletins = await ghGet("bulletins.json");
     const list = document.getElementById("bulletin-list");
@@ -266,7 +312,14 @@
       const row = document.createElement("div");
       row.className = "admin-row";
       const pdfLink = b.attachment ? ` &middot; <a href="${b.attachment}" target="_blank" rel="noopener">PDF</a>` : "";
-      row.innerHTML = `<span>${b.periode} &mdash; ${(b.matieres || []).join(", ")}${pdfLink}</span>`;
+      const matieresLabel = (b.matieres || []).map((m) => m.nom).join(", ");
+      row.innerHTML = `<span>${b.periode} &mdash; ${matieresLabel}${pdfLink}</span>`;
+      const printLink = document.createElement("a");
+      printLink.className = "admin-row-delete";
+      printLink.href = `bulletin.html?bulletin=${encodeURIComponent(b.id)}`;
+      printLink.target = "_blank";
+      printLink.rel = "noopener";
+      printLink.textContent = "Imprimer";
       const del = document.createElement("button");
       del.type = "button";
       del.className = "admin-row-delete";
@@ -276,7 +329,11 @@
         await ghPut("bulletins.json", next, `Supprime le bulletin ${b.periode}`);
         loadBulletins();
       });
-      row.appendChild(del);
+      const actions = document.createElement("div");
+      actions.className = "admin-row-actions";
+      actions.appendChild(printLink);
+      actions.appendChild(del);
+      row.appendChild(actions);
       list.appendChild(row);
     });
     return bulletins;
@@ -302,19 +359,27 @@
         );
       }
 
+      const matieres = [...document.querySelectorAll("#bulletin-matieres-rows .bulletin-matiere-row")]
+        .map((row) => ({
+          nom: row.querySelector(".bulletin-matiere-nom").value.trim(),
+          niveau: Number(row.querySelector(".bulletin-matiere-niveau").value),
+          appreciation: row.querySelector(".bulletin-matiere-appreciation").value.trim(),
+        }))
+        .filter((m) => m.nom);
+
       const [bulletins, fiches] = await Promise.all([ghGet("bulletins.json"), ghGet("fiches.json")]);
       const badgeSet = new Set(fiches.map((f) => f.badge).filter(Boolean));
       bulletins.push({
         id: String(Date.now()),
         periode: fd.get("periode"),
-        matieres: (fd.get("matieres") || "").split(",").map((s) => s.trim()).filter(Boolean),
-        points_forts: fd.get("points_forts"),
+        matieres,
         mot: fd.get("mot"),
         badges: [...badgeSet],
         attachment,
       });
       await ghPut("bulletins.json", bulletins, `Ajoute le bulletin ${fd.get("periode")}`);
       form.reset();
+      resetMatieresRows();
       showStatus(status, "Bulletin créé. Visible sur l'espace élève dans une minute environ.");
       loadBulletins();
     } catch (err) {
