@@ -278,9 +278,19 @@
     return row;
   }
 
-  function resetMatieresRows() {
+  async function resetMatieresRows() {
     const rows = document.getElementById("bulletin-matieres-rows");
     rows.innerHTML = "";
+    try {
+      const cours = await EWK.fetchJSON("cours.json");
+      const themes = [...new Set(cours.map((c) => c.matiere).filter(Boolean))];
+      if (themes.length) {
+        themes.forEach((m) => rows.appendChild(matiereRow(m)));
+        return;
+      }
+    } catch (e) {
+      /* pas grave, on retombe sur une ligne vide */
+    }
     rows.appendChild(matiereRow());
   }
 
