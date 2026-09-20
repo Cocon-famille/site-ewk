@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "id": "1789910807348",
+    "periode": "Semaine A",
+    "matieres": [
+      {
+        "nom": "Découverte de l'école",
+        "niveau": 3,
+        "appreciation": "Bravo"
+      }
+    ],
+    "mot": "TB",
+    "badges": [],
+    "attachment": null
+  }
+]
