@@ -88,13 +88,7 @@
 
   section(`
     <div class="fp-signature">
-      <div class="fp-signature-text">
-        <p>Directeur de l'École du Weekend,</p>
-        <p class="fp-signature-name">Maël DOMENECH</p>
-      </div>
-      <svg class="fp-signature-scribble" viewBox="0 0 200 90" aria-hidden="true">
-        <path d="M8,58 Q45,32 70,52 Q85,64 78,42 Q70,14 100,10 Q135,6 128,35 Q122,58 100,50 Q80,44 78,60 Q76,80 70,58 M60,26 L92,32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+      <img src="signature-mael.png" alt="Directeur de l'École du Weekend, Maël Domenech" class="fp-signature-img">
     </div>
   `);
 })();

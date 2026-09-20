@@ -655,10 +655,8 @@ a:hover { color: var(--ink); border-bottom-color: var(--ink); }
 .fp-bulletin-niveau { font-size: 20px; white-space: nowrap; }
 .fp-legend { margin: 12px 0 0; font-family: var(--font-mono); font-size: 11px; color: var(--ink-pale); }
 .fp-mot { font-family: var(--font-serif); font-style: italic; font-size: 20px; color: var(--orange-text); margin: 0; }
-.fp-signature { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; }
-.fp-signature-text p { margin: 0; font-size: 14px; }
-.fp-signature-name { font-family: var(--font-serif); font-size: 20px; margin-top: 4px !important; }
-.fp-signature-scribble { width: 150px; height: 68px; color: var(--ink); flex: none; }
+.fp-signature { display: flex; justify-content: flex-end; }
+.fp-signature-img { width: 220px; height: auto; }
 
 @media print {
   .fp-doc { max-width: none; padding: 0 0 20px; }
