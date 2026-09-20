@@ -156,6 +156,27 @@
     );
   }
 
+  if (type === "fournitures") {
+    root.className = "poster poster--reglement";
+    root.appendChild(
+      el(`
+      <div class="poster-inner">
+        <span class="disc poster-logo" aria-hidden="true"></span>
+        <p class="poster-eyebrow">Rentrée 2026-2027</p>
+        <h1 class="poster-title">Fournitures<br>Petite Section</h1>
+        <ol class="poster-rules">
+          <li><span class="poster-rule-num">1</span>Un doudou, pour les moments calmes.</li>
+          <li><span class="poster-rule-num">2</span>Une tenue de rechange complète.</li>
+          <li><span class="poster-rule-num">3</span>Des chaussons.</li>
+          <li><span class="poster-rule-num">4</span>Un paquet de mouchoirs.</li>
+          <li><span class="poster-rule-num">5</span>Un tablier ou une vieille chemise, pour peindre.</li>
+          <li><span class="poster-rule-num">6</span>Un cahier à plusieurs compartiments (le petit plus que le directeur adore).</li>
+        </ol>
+      </div>
+    `)
+    );
+  }
+
   if (type === "inscription") {
     root.className = "poster poster--inscription";
     root.appendChild(
