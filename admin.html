@@ -111,22 +111,24 @@
       <p class="section-lede">Un résumé de la période, et le vrai bulletin en pièce jointe si tu en as fait un.</p>
       <form id="bulletin-form" class="admin-form admin-form--grid">
         <label>Période
-          <input type="text" name="periode" placeholder="Septembre 2026" required>
+          <input type="text" name="periode" placeholder="Trimestre 1" required>
         </label>
-        <label class="admin-form-span">Matières couvertes
-          <input type="text" name="matieres" placeholder="Fractions, conjugaison (séparées par des virgules)">
-        </label>
-        <label class="admin-form-span">Points forts
-          <textarea name="points_forts" rows="3" placeholder="Ce qu'il a compris, ce qui a progressé..."></textarea>
-        </label>
-        <label class="admin-form-span">Mot d'encouragement
-          <input type="text" name="mot" placeholder="Continue comme ça, tu vas y arriver.">
+
+        <div class="admin-form-span">
+          <p class="section-lede" style="margin:0 0 10px">Matières notées &mdash; légende : &#9312; Non atteint &middot; &#9313; Partiellement atteint &middot; &#9314; Atteint &middot; &#9315; Excellente maîtrise</p>
+          <div id="bulletin-matieres-rows"></div>
+          <button type="button" id="bulletin-add-matiere">+ Ajouter une matière</button>
+        </div>
+
+        <label class="admin-form-span">Commentaire général
+          <textarea name="mot" rows="3" placeholder="Un trimestre plein de progrès. Continue comme ça, tu vas y arriver."></textarea>
         </label>
         <label class="admin-form-span">Pièce jointe (PDF, facultatif)
           <input type="file" id="bulletin-file" accept="application/pdf">
         </label>
         <button type="submit">Créer le bulletin</button>
       </form>
+      <datalist id="matieres-datalist"></datalist>
       <p class="admin-status" id="bulletin-status" hidden></p>
       <h3>Bulletins existants</h3>
       <div id="bulletin-list" class="admin-list"></div>
