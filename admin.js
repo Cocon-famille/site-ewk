@@ -122,6 +122,7 @@
         loadEdt(),
         loadMessages(),
         loadClasse(),
+        loadCantine(),
       ]).then((r) => r[0]);
       populatePosterFicheSelect(fiches);
     } catch (e) {
@@ -607,6 +608,35 @@
       const wb = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(wb, sheet, "Classe 2026-2027");
       XLSX.writeFile(wb, "classe-2026-2027.xlsx");
+    } catch (err) {
+      showStatus(status, err.message, true);
+    }
+  });
+
+  // --- cantine ---
+
+  async function loadCantine() {
+    try {
+      const cantine = await ghGet("cantine.json");
+      const form = document.getElementById("cantine-form");
+      form.elements.prix.value = (cantine.prixCentimes / 100).toFixed(2);
+      form.elements.raison.value = cantine.raison || "Cantine";
+    } catch (e) {
+      /* pas grave, les valeurs par défaut du fichier restent */
+    }
+  }
+
+  document.getElementById("cantine-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const status = document.getElementById("cantine-status");
+    try {
+      const fd = new FormData(e.target);
+      const cantine = {
+        prixCentimes: Math.round(Number(fd.get("prix")) * 100),
+        raison: fd.get("raison").trim(),
+      };
+      await ghPut("cantine.json", cantine, `Met à jour le prix de la cantine (${fd.get("prix")} €)`);
+      showStatus(status, "Enregistré. Pris en compte dans une minute environ.");
     } catch (err) {
       showStatus(status, err.message, true);
     }

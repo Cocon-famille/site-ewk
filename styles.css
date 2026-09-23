@@ -662,3 +662,22 @@ a:hover { color: var(--ink); border-bottom-color: var(--ink); }
   .fp-doc { max-width: none; padding: 0 0 20px; }
   .fp-section { break-inside: avoid; }
 }
+
+/* Cantine — cartes + scanner */
+.cantine-page { max-width: 900px; margin: 0 auto; padding: 60px 32px 80px; }
+.cantine-page-title { font-family: var(--font-serif); font-size: 34px; margin: 0 0 8px; }
+.cantine-page-lede { color: var(--ink-pale); margin: 0 0 32px; }
+.cantine-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+.cantine-card {
+  border: 2px solid var(--ink); padding: 24px; text-align: center; background: var(--paper);
+  display: flex; flex-direction: column; align-items: center; gap: 10px; break-inside: avoid;
+}
+.cantine-card-name { font-family: var(--font-serif); font-size: 20px; margin-top: 4px; }
+.cantine-card-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-pale); }
+.cantine-card-qr { margin-top: 8px; }
+
+.cantine-scan-wrap { max-width: 480px; margin: 0 auto; padding: 60px 24px 80px; text-align: center; }
+.cantine-video { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; background: var(--ink); border: 2px solid var(--ink); }
+.scan-status { margin-top: 20px; font-family: var(--font-mono); font-size: 14px; color: var(--ink-pale); }
+.scan-status--ok { color: var(--green); }
+.scan-status--error { color: var(--orange-text); }

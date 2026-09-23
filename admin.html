@@ -54,6 +54,7 @@
       <a href="#cours" class="admin-tab-link" data-tab="cours">Cours</a>
       <a href="#messages" class="admin-tab-link" data-tab="messages">Messages</a>
       <a href="#classe" class="admin-tab-link" data-tab="classe">Classe 2026-2027</a>
+      <a href="#cantine" class="admin-tab-link" data-tab="cantine">Cantine</a>
     </nav>
 
     <section data-panel="fiche" class="admin-panel">
@@ -266,6 +267,25 @@
       <h3>Élèves inscrits</h3>
       <p><button type="button" id="classe-export">Exporter en Excel &rarr;</button></p>
       <div id="classe-list" class="admin-list"></div>
+    </section>
+
+    <section data-panel="cantine" class="admin-panel" hidden>
+      <h2>Cantine</h2>
+      <p class="section-lede">Les cartes scannées créent une dépense en attente dans Crédit Domestique &mdash; à valider là-bas, pas ici.</p>
+      <p>
+        <a href="cantine.html" target="_blank" rel="noopener" class="link-arrow">Générateur de cartes cantine &rarr;</a><br>
+        <a href="cantine-scan.html" target="_blank" rel="noopener" class="link-arrow">Scanner cantine &rarr;</a>
+      </p>
+      <form id="cantine-form" class="admin-form admin-form--grid">
+        <label>Prix du repas (&euro;)
+          <input type="number" name="prix" step="0.01" min="0" required>
+        </label>
+        <label>Motif
+          <input type="text" name="raison" placeholder="Cantine" required>
+        </label>
+        <button type="submit">Enregistrer</button>
+      </form>
+      <p class="admin-status" id="cantine-status" hidden></p>
     </section>
 
   </div>
