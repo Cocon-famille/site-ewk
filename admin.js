@@ -123,6 +123,7 @@
         loadMessages(),
         loadClasse(),
         loadCantine(),
+        loadPresences(),
       ]).then((r) => r[0]);
       populatePosterFicheSelect(fiches);
     } catch (e) {
@@ -641,6 +642,32 @@
       showStatus(status, err.message, true);
     }
   });
+
+  // --- présence (appel) ---
+
+  async function loadPresences() {
+    const presences = await ghGet("presences.json");
+    const list = document.getElementById("presence-list");
+    list.innerHTML = "";
+    [...presences].reverse().forEach((p) => {
+      const row = document.createElement("div");
+      row.className = "admin-row";
+      const matieres = (p.matieres || []).join(", ");
+      row.innerHTML = `<span>${p.date} &middot; ${p.heure} &mdash; <strong>${p.nom}</strong>${matieres ? ` &middot; ${matieres}` : ""}</span>`;
+      const del = document.createElement("button");
+      del.type = "button";
+      del.className = "admin-row-delete";
+      del.textContent = "Supprimer";
+      del.addEventListener("click", async () => {
+        const next = presences.filter((x) => x.id !== p.id);
+        await ghPut("presences.json", next, `Retire une présence (${p.nom})`);
+        loadPresences();
+      });
+      row.appendChild(del);
+      list.appendChild(row);
+    });
+    return presences;
+  }
 
   // --- cours (diaporamas) ---
 
