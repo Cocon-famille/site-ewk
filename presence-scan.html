@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Faire l'appel — L'École du Weekend</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="fp-body">
+
+<div class="poster-toolbar no-print">
+  <a href="admin.html">&larr; Retour à l'admin</a>
+</div>
+
+<main class="cantine-scan-wrap">
+  <h1 class="cantine-page-title">Faire l'appel</h1>
+  <p id="presence-guard" class="scan-status" hidden></p>
+  <video id="scan-video" class="cantine-video" playsinline muted></video>
+  <canvas id="scan-canvas" hidden></canvas>
+  <p id="scan-status" class="scan-status">Démarrage de la caméra…</p>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.js"></script>
+<script src="data.js"></script>
+<script src="presence-scan.js"></script>
+</body>
+</html>

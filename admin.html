@@ -55,6 +55,7 @@
       <a href="#messages" class="admin-tab-link" data-tab="messages">Messages</a>
       <a href="#classe" class="admin-tab-link" data-tab="classe">Classe 2026-2027</a>
       <a href="#cantine" class="admin-tab-link" data-tab="cantine">Cantine</a>
+      <a href="#presence" class="admin-tab-link" data-tab="presence">Appel</a>
     </nav>
 
     <section data-panel="fiche" class="admin-panel">
@@ -286,6 +287,14 @@
         <button type="submit">Enregistrer</button>
       </form>
       <p class="admin-status" id="cantine-status" hidden></p>
+    </section>
+
+    <section data-panel="presence" class="admin-panel" hidden>
+      <h2>Appel</h2>
+      <p class="section-lede">Scanne la carte pour marquer une présence au cours du jour &mdash; ne touche pas à Crédit Domestique.</p>
+      <p><a href="presence-scan.html" target="_blank" rel="noopener" class="link-arrow">Faire l'appel (scanner) &rarr;</a></p>
+      <h3>Présences enregistrées</h3>
+      <div id="presence-list" class="admin-list"></div>
     </section>
 
   </div>

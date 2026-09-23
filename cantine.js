@@ -23,16 +23,19 @@
       const card = document.createElement("div");
       card.className = "cantine-card";
       card.innerHTML = `
-        <span class="disc disc--small" aria-hidden="true"></span>
-        <div class="cantine-card-name">${a.holder_name}</div>
-        <div class="cantine-card-label">Carte cantine &middot; L'École du Weekend</div>
-        <div class="cantine-card-qr"></div>
+        <div class="cantine-card-photo" aria-hidden="true">PHOTO</div>
+        <div class="cantine-card-info">
+          <span class="disc disc--small" aria-hidden="true"></span>
+          <div class="cantine-card-name">${a.holder_name}</div>
+          <div class="cantine-card-label">Carte cantine &middot; L'École du Weekend</div>
+          <div class="cantine-card-qr"></div>
+        </div>
       `;
       grid.appendChild(card);
       new QRCode(card.querySelector(".cantine-card-qr"), {
         text: `EWK-CANTINE:${a.id}`,
-        width: 120,
-        height: 120,
+        width: 84,
+        height: 84,
         correctLevel: QRCode.CorrectLevel.M,
       });
     });
