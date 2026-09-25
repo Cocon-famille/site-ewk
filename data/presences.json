@@ -38,5 +38,15 @@
     "semaine": "A",
     "jour": null,
     "matieres": []
+  },
+  {
+    "id": "1790352287886",
+    "date": "vendredi 25 septembre 2026",
+    "heure": "18:04",
+    "accountId": "marin",
+    "nom": "MARIN · FOYER",
+    "semaine": "A",
+    "jour": null,
+    "matieres": []
   }
 ]
