@@ -6,12 +6,15 @@
   document.getElementById("print-btn").addEventListener("click", () => window.print());
 
   try {
-    const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/accounts?select=id,holder_name,role&archived=eq.false&role=in.(admin,parent,child)&order=holder_name`,
-      { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } }
-    );
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const accounts = await res.json();
+    const [accountsRes, codes] = await Promise.all([
+      fetch(
+        `${SUPABASE_URL}/rest/v1/accounts?select=id,holder_name,role&archived=eq.false&role=in.(admin,parent,child)&order=holder_name`,
+        { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } }
+      ),
+      EWK.fetchJSON("scan-codes.json"),
+    ]);
+    if (!accountsRes.ok) throw new Error(`HTTP ${accountsRes.status}`);
+    const accounts = await accountsRes.json();
 
     grid.innerHTML = "";
     if (!accounts.length) {
@@ -20,6 +23,7 @@
     }
 
     accounts.forEach((a) => {
+      const code = codes[a.id];
       const card = document.createElement("div");
       card.className = "cantine-card";
       card.innerHTML = `
@@ -28,16 +32,23 @@
           <span class="disc disc--small" aria-hidden="true"></span>
           <div class="cantine-card-name">${a.holder_name}</div>
           <div class="cantine-card-label">Carte cantine &middot; L'École du Weekend</div>
-          <div class="cantine-card-qr"></div>
+          ${
+            code
+              ? `<svg class="cantine-card-barcode"></svg><div class="cantine-card-code">${code}</div>`
+              : `<p class="cantine-card-code">Pas de code attribué</p>`
+          }
         </div>
       `;
       grid.appendChild(card);
-      new QRCode(card.querySelector(".cantine-card-qr"), {
-        text: `EWK-CANTINE:${a.id}`,
-        width: 84,
-        height: 84,
-        correctLevel: QRCode.CorrectLevel.M,
-      });
+      if (code) {
+        JsBarcode(card.querySelector(".cantine-card-barcode"), code, {
+          format: "CODE128",
+          width: 2,
+          height: 40,
+          displayValue: false,
+          margin: 0,
+        });
+      }
     });
   } catch (e) {
     grid.innerHTML = "<p>Impossible de charger les comptes depuis Crédit Domestique.</p>";

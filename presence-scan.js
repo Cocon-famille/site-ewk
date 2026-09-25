@@ -7,17 +7,15 @@
 
   const token = localStorage.getItem(STORAGE_KEY);
   const guard = document.getElementById("presence-guard");
-  const video = document.getElementById("scan-video");
-  const canvas = document.getElementById("scan-canvas");
-  const ctx = canvas.getContext("2d", { willReadFrequently: true });
+  const scanArea = document.getElementById("presence-scan-area");
+  const input = document.getElementById("scan-input");
   const statusEl = document.getElementById("scan-status");
 
   if (!token) {
     guard.hidden = false;
     guard.className = "scan-status scan-status--error";
     guard.innerHTML = 'Connecte-toi depuis <a href="admin.html">l\'admin</a> d\'abord (jeton requis pour enregistrer l\'appel).';
-    statusEl.hidden = true;
-    video.hidden = true;
+    scanArea.hidden = true;
     return;
   }
 
@@ -79,16 +77,21 @@
     return { semaine, jour, matieres: (edt[semaine]?.[jour] || []).map((c) => c.matiere) };
   }
 
-  let scanning = true;
+  let busy = false;
   const accounts = {};
+  const codeToAccount = {};
 
   async function loadAccounts() {
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/accounts?select=id,holder_name&archived=eq.false`, {
-      headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` },
-    });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const rows = await res.json();
+    const [accountsRes, codes] = await Promise.all([
+      fetch(`${SUPABASE_URL}/rest/v1/accounts?select=id,holder_name&archived=eq.false`, {
+        headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` },
+      }),
+      EWK.fetchJSON("scan-codes.json"),
+    ]);
+    if (!accountsRes.ok) throw new Error(`HTTP ${accountsRes.status}`);
+    const rows = await accountsRes.json();
     rows.forEach((r) => (accounts[r.id] = r.holder_name));
+    Object.entries(codes).forEach(([accountId, code]) => (codeToAccount[code] = accountId));
   }
 
   async function recordPresence(accountId) {
@@ -110,17 +113,15 @@
     return entry;
   }
 
-  async function onDecoded(text) {
-    if (!scanning) return;
-    const m = /^EWK-CANTINE:(.+)$/.exec(text.trim());
-    if (!m) return;
-    const accountId = m[1];
-    if (!accounts[accountId]) {
-      setStatus("Carte non reconnue.", "error");
+  async function handleCode(code) {
+    if (busy) return;
+    const accountId = codeToAccount[code];
+    if (!accountId) {
+      setStatus("Code inconnu.", "error");
       return;
     }
 
-    scanning = false;
+    busy = true;
     setStatus("Enregistrement…");
     try {
       const entry = await recordPresence(accountId);
@@ -130,35 +131,32 @@
       setStatus(`Échec : ${err.message}`, "error");
     }
     setTimeout(() => {
-      scanning = true;
+      busy = false;
       setStatus("Prêt à scanner la carte suivante.");
-    }, 3000);
+    }, 2000);
   }
 
-  function tick() {
-    if (video.readyState === video.HAVE_ENOUGH_DATA) {
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const code = jsQR(imageData.data, imageData.width, imageData.height);
-      if (code) onDecoded(code.data);
+  input.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter") return;
+    e.preventDefault();
+    const code = input.value.trim();
+    input.value = "";
+    if (!/^\d{8}$/.test(code)) {
+      setStatus("Code invalide (8 chiffres attendus).", "error");
+      return;
     }
-    requestAnimationFrame(tick);
-  }
+    handleCode(code);
+  });
 
-  async function start() {
-    try {
-      await loadAccounts();
-      const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
-      video.srcObject = stream;
-      await video.play();
-      setStatus("Prêt à scanner.");
-      requestAnimationFrame(tick);
-    } catch (err) {
-      setStatus(`Impossible d'accéder à la caméra : ${err.message}`, "error");
-    }
-  }
+  document.addEventListener("click", (e) => {
+    if (e.target.tagName !== "A") input.focus();
+  });
 
-  start();
+  try {
+    await loadAccounts();
+    setStatus("Prêt à scanner.");
+    input.focus();
+  } catch (err) {
+    setStatus(`Impossible de charger les comptes : ${err.message}`, "error");
+  }
 })();

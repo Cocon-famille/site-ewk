@@ -22,12 +22,13 @@
 <main class="cantine-scan-wrap">
   <h1 class="cantine-page-title">Faire l'appel</h1>
   <p id="presence-guard" class="scan-status" hidden></p>
-  <video id="scan-video" class="cantine-video" playsinline muted></video>
-  <canvas id="scan-canvas" hidden></canvas>
-  <p id="scan-status" class="scan-status">Démarrage de la caméra…</p>
+  <div id="presence-scan-area">
+    <p class="cantine-page-lede">Scanne la carte avec la douchette USB (ou tape le code à 8 chiffres).</p>
+    <input id="scan-input" class="scan-input" type="text" inputmode="numeric" autocomplete="off" placeholder="Code à 8 chiffres" autofocus>
+    <p id="scan-status" class="scan-status">Prêt à scanner.</p>
+  </div>
 </main>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.js"></script>
 <script src="data.js"></script>
 <script src="presence-scan.js"></script>
 </body>
