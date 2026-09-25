@@ -82,15 +82,16 @@
   const codeToAccount = {};
 
   async function loadAccounts() {
-    const [accountsRes, codes] = await Promise.all([
+    const [accountsRes, codes, prenoms] = await Promise.all([
       fetch(`${SUPABASE_URL}/rest/v1/accounts?select=id,holder_name&archived=eq.false`, {
         headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` },
       }),
       EWK.fetchJSON("scan-codes.json"),
+      EWK.fetchJSON("prenoms.json"),
     ]);
     if (!accountsRes.ok) throw new Error(`HTTP ${accountsRes.status}`);
     const rows = await accountsRes.json();
-    rows.forEach((r) => (accounts[r.id] = r.holder_name));
+    rows.forEach((r) => (accounts[r.id] = prenoms[r.id] || r.holder_name));
     Object.entries(codes).forEach(([accountId, code]) => (codeToAccount[code] = accountId));
   }
 

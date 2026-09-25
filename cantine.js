@@ -6,12 +6,13 @@
   document.getElementById("print-btn").addEventListener("click", () => window.print());
 
   try {
-    const [accountsRes, codes] = await Promise.all([
+    const [accountsRes, codes, prenoms] = await Promise.all([
       fetch(
         `${SUPABASE_URL}/rest/v1/accounts?select=id,holder_name,role&archived=eq.false&role=in.(admin,parent,child)&order=holder_name`,
         { headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` } }
       ),
       EWK.fetchJSON("scan-codes.json"),
+      EWK.fetchJSON("prenoms.json"),
     ]);
     if (!accountsRes.ok) throw new Error(`HTTP ${accountsRes.status}`);
     const accounts = await accountsRes.json();
@@ -30,7 +31,7 @@
         <div class="cantine-card-photo" aria-hidden="true">PHOTO</div>
         <div class="cantine-card-info">
           <span class="disc disc--small" aria-hidden="true"></span>
-          <div class="cantine-card-name">${a.holder_name}</div>
+          <div class="cantine-card-name">${prenoms[a.id] || a.holder_name}</div>
           <div class="cantine-card-label">Carte cantine &middot; L'École du Weekend</div>
           ${
             code
