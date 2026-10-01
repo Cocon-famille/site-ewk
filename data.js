@@ -29,6 +29,18 @@ EWK.COLORS = {
   rose: { bg: "#B85C7A", text: "#FFFDF8" },
 };
 
+EWK.tinkercadId = function (prenom, nom) {
+  const strip = (s) =>
+    String(s || "")
+      .trim()
+      .normalize("NFD")
+      .replace(/[̀-ͯ]/g, "")
+      .toLowerCase();
+  const p = strip(prenom);
+  const n = strip(nom);
+  return p + n.slice(0, 1);
+};
+
 EWK.isoWeek = function (date) {
   const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
   const dayNum = d.getUTCDay() || 7;

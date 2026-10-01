@@ -550,7 +550,8 @@
       ]
         .filter(Boolean)
         .join(" &middot; ");
-      row.innerHTML = `<span>${escapeHtml(e.nom)} <strong>${escapeHtml(e.prenom)}</strong> &mdash; ${escapeHtml(e.naissance)} <span class="pill">${NIVEAU_LABEL[e.niveau] || escapeHtml(e.niveau)}</span>${extra ? `<br><small>${extra}</small>` : ""}</span>`;
+      const tinkercadId = EWK.tinkercadId(e.prenom, e.nom);
+      row.innerHTML = `<span>${escapeHtml(e.nom)} <strong>${escapeHtml(e.prenom)}</strong> &mdash; ${escapeHtml(e.naissance)} <span class="pill">${NIVEAU_LABEL[e.niveau] || escapeHtml(e.niveau)}</span><br><small>Identifiant Tinkercad : ${escapeHtml(tinkercadId)}${extra ? ` &middot; ${extra}` : ""}</small></span>`;
       const del = document.createElement("button");
       del.type = "button";
       del.className = "admin-row-delete";

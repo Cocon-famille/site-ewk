@@ -4,6 +4,9 @@
   const fichesEl = document.getElementById("eleve-fiches");
   const messagesEl = document.getElementById("eleve-messages");
 
+  const tinkercadIdEl = document.getElementById("tinkercad-id");
+  if (tinkercadIdEl) tinkercadIdEl.textContent = EWK.tinkercadId("Marin", "Domenech");
+
   try {
     const messages = await EWK.fetchJSON("messages.json");
     messagesEl.innerHTML = "";
