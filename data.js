@@ -29,6 +29,12 @@ EWK.COLORS = {
   rose: { bg: "#B85C7A", text: "#FFFDF8" },
 };
 
+EWK.TINKERCAD_CLASS_URL = {
+  IE2: "https://www.tinkercad.com/joinclass/TQTSITRTZ",
+  IE3: "https://www.tinkercad.com/joinclass/WNXS2AWKJ",
+  IE5: "https://www.tinkercad.com/joinclass/U5PZX98KY",
+};
+
 EWK.tinkercadId = function (prenom, nom) {
   const strip = (s) =>
     String(s || "")
