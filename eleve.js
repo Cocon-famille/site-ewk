@@ -6,6 +6,8 @@
 
   const tinkercadIdEl = document.getElementById("tinkercad-id");
   if (tinkercadIdEl) tinkercadIdEl.textContent = EWK.tinkercadId("Marin", "Domenech");
+  const tinkercadLinkEl = document.getElementById("tinkercad-link");
+  if (tinkercadLinkEl) tinkercadLinkEl.href = EWK.TINKERCAD_CLASS_URL.IE3;
 
   try {
     const messages = await EWK.fetchJSON("messages.json");

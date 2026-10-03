@@ -551,7 +551,11 @@
         .filter(Boolean)
         .join(" &middot; ");
       const tinkercadId = EWK.tinkercadId(e.prenom, e.nom);
-      row.innerHTML = `<span>${escapeHtml(e.nom)} <strong>${escapeHtml(e.prenom)}</strong> &mdash; ${escapeHtml(e.naissance)} <span class="pill">${NIVEAU_LABEL[e.niveau] || escapeHtml(e.niveau)}</span><br><small>Identifiant Tinkercad : ${escapeHtml(tinkercadId)}${extra ? ` &middot; ${extra}` : ""}</small></span>`;
+      const tinkercadUrl = EWK.TINKERCAD_CLASS_URL[e.niveau];
+      const tinkercad = tinkercadUrl
+        ? `Tinkercad : ${escapeHtml(tinkercadId)} &middot; <a href="${escapeHtml(tinkercadUrl)}" target="_blank" rel="noopener">classe ${escapeHtml(e.niveau)}</a>`
+        : `Tinkercad : ${escapeHtml(tinkercadId)} &middot; pas de classe pour ce niveau`;
+      row.innerHTML = `<span>${escapeHtml(e.nom)} <strong>${escapeHtml(e.prenom)}</strong> &mdash; ${escapeHtml(e.naissance)} <span class="pill">${NIVEAU_LABEL[e.niveau] || escapeHtml(e.niveau)}</span><br><small>${tinkercad}${extra ? ` &middot; ${extra}` : ""}</small></span>`;
       const del = document.createElement("button");
       del.type = "button";
       del.className = "admin-row-delete";
