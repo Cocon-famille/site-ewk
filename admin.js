@@ -124,6 +124,7 @@
         loadClasse(),
         loadCantine(),
         loadPresences(),
+        loadProgrammeMaths(),
       ]).then((r) => r[0]);
       populatePosterFicheSelect(fiches);
     } catch (e) {
@@ -481,6 +482,65 @@
       form.reset();
       showStatus(status, "Cours ajouté. Visible sur le site dans une minute environ.");
       loadEdt();
+    } catch (err) {
+      showStatus(status, err.message, true);
+    }
+  });
+
+  // --- programme maths IE5 ---
+
+  function compareNumero(a, b) {
+    const pa = String(a).split(".").map(Number);
+    const pb = String(b).split(".").map(Number);
+    for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+      const diff = (pa[i] || 0) - (pb[i] || 0);
+      if (diff) return diff;
+    }
+    return 0;
+  }
+
+  async function loadProgrammeMaths() {
+    const chapitres = await ghGet("programme-maths-ie5.json");
+    const list = document.getElementById("programme-maths-list");
+    list.innerHTML = "";
+    [...chapitres]
+      .sort((a, b) => compareNumero(a.numero, b.numero))
+      .forEach((c) => {
+        const row = document.createElement("div");
+        row.className = "admin-row";
+        row.innerHTML = `<span><span class="programme-num">${escapeHtml(c.numero)}</span><strong>${escapeHtml(c.titre)}</strong>${c.notes ? `<br><small>${escapeHtml(c.notes)}</small>` : ""}</span>`;
+        const del = document.createElement("button");
+        del.type = "button";
+        del.className = "admin-row-delete";
+        del.textContent = "Supprimer";
+        del.addEventListener("click", async () => {
+          const next = chapitres.filter((x) => x.id !== c.id);
+          await ghPut("programme-maths-ie5.json", next, `Retire le chapitre ${c.numero}`);
+          loadProgrammeMaths();
+        });
+        row.appendChild(del);
+        list.appendChild(row);
+      });
+    return chapitres;
+  }
+
+  document.getElementById("programme-maths-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const status = document.getElementById("programme-maths-status");
+    try {
+      const chapitres = await ghGet("programme-maths-ie5.json");
+      const fd = new FormData(form);
+      chapitres.push({
+        id: String(Date.now()),
+        numero: fd.get("numero").trim(),
+        titre: fd.get("titre"),
+        notes: fd.get("notes") || "",
+      });
+      await ghPut("programme-maths-ie5.json", chapitres, `Ajoute le chapitre ${fd.get("numero")} (maths IE5)`);
+      form.reset();
+      showStatus(status, "Chapitre ajouté.");
+      loadProgrammeMaths();
     } catch (err) {
       showStatus(status, err.message, true);
     }
