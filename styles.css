@@ -389,6 +389,14 @@ a:hover { color: var(--ink); border-bottom-color: var(--ink); }
 
 .programme-num { font-family: var(--font-mono); font-size: 12px; color: var(--orange-text); min-width: 34px; display: inline-block; }
 
+.admin-richbar { display: flex; gap: 6px; margin-bottom: 6px; }
+.admin-richbar button {
+  font-family: var(--font-sans); font-size: 13px; line-height: 1; min-width: 30px;
+  padding: 6px 10px; border: 1px solid var(--chalk); background: var(--paper-raised); color: var(--ink); cursor: pointer;
+}
+.admin-richbar button:hover { border-color: var(--ink-pale); }
+.admin-richbar mark { background: #FCE38A; padding: 0 2px; }
+
 .bulletin-matiere-row {
   display: grid; grid-template-columns: 1fr 1fr 2fr auto; gap: 10px; align-items: start; margin-bottom: 10px;
 }

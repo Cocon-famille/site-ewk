@@ -235,7 +235,13 @@
           <input type="text" name="titre" placeholder="Nombres jusqu'à 10 000" required>
         </label>
         <label class="admin-form-span">Notes (optionnel)
-          <textarea name="notes" rows="3" placeholder="Ce qui a été vu, les exemples utilisés…"></textarea>
+          <div class="admin-richbar" id="programme-maths-richbar">
+            <button type="button" data-wrap="**" title="Gras"><strong>G</strong></button>
+            <button type="button" data-wrap="*" title="Italique"><em>I</em></button>
+            <button type="button" data-wrap="__" title="Souligné"><u>S</u></button>
+            <button type="button" data-wrap="==" title="Surligné"><mark>H</mark></button>
+          </div>
+          <textarea name="notes" id="programme-maths-notes" rows="3" placeholder="Ce qui a été vu… sélectionne du texte puis clique G/I/S/H pour le mettre en forme"></textarea>
         </label>
         <button type="submit">Ajouter</button>
       </form>
