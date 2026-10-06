@@ -387,6 +387,14 @@ a:hover { color: var(--ink); border-bottom-color: var(--ink); }
 .admin-row-delete:hover { color: var(--ink); }
 .admin-row-actions { display: flex; gap: 18px; flex: none; }
 
+.programme-outline { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 32px; }
+.programme-chapter-head { display: flex; gap: 16px; align-items: baseline; margin-bottom: 14px; }
+.programme-chapter-head .programme-num { font-family: var(--font-serif); font-size: 28px; color: var(--orange-text); line-height: 1; min-width: 32px; }
+.programme-chapter-title { font-family: var(--font-serif); font-size: 21px; }
+.programme-sub { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.programme-sub li { display: flex; gap: 14px; align-items: baseline; padding-left: 48px; font-size: 15px; }
+.programme-sub .programme-num { font-family: var(--font-mono); font-size: 13px; color: var(--ink-pale); min-width: 32px; }
+
 .bulletin-matiere-row {
   display: grid; grid-template-columns: 1fr 1fr 2fr auto; gap: 10px; align-items: start; margin-bottom: 10px;
 }
