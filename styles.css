@@ -397,6 +397,11 @@ a:hover { color: var(--ink); border-bottom-color: var(--ink); }
 .admin-richbar button:hover { border-color: var(--ink-pale); }
 .admin-richbar mark { background: #FCE38A; padding: 0 2px; }
 
+.admin-form button.admin-form-button--ghost {
+  background: none; color: var(--ink-pale); border: 1px solid var(--chalk);
+}
+.admin-form button.admin-form-button--ghost:hover { background: none; color: var(--ink); border-color: var(--ink-pale); }
+
 .bulletin-matiere-row {
   display: grid; grid-template-columns: 1fr 1fr 2fr auto; gap: 10px; align-items: start; margin-bottom: 10px;
 }

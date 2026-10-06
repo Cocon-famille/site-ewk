@@ -524,6 +524,21 @@
     });
   });
 
+  let programmeMathsEditingId = null;
+
+  function setProgrammeMathsEditing(c) {
+    const form = document.getElementById("programme-maths-form");
+    programmeMathsEditingId = c ? c.id : null;
+    form.elements.numero.value = c ? c.numero : "";
+    form.elements.titre.value = c ? c.titre : "";
+    form.elements.notes.value = c ? c.notes || "" : "";
+    document.getElementById("programme-maths-submit").textContent = c ? "Enregistrer les modifications" : "Ajouter";
+    document.getElementById("programme-maths-cancel").hidden = !c;
+    if (c) form.elements.numero.focus();
+  }
+
+  document.getElementById("programme-maths-cancel").addEventListener("click", () => setProgrammeMathsEditing(null));
+
   async function loadProgrammeMaths() {
     const chapitres = await ghGet("programme-maths-ie5.json");
     const list = document.getElementById("programme-maths-list");
@@ -534,6 +549,13 @@
         const row = document.createElement("div");
         row.className = "admin-row";
         row.innerHTML = `<span><span class="programme-num">${escapeHtml(c.numero)}</span><strong>${escapeHtml(c.titre)}</strong>${c.notes ? `<br><small>${renderNotes(c.notes)}</small>` : ""}</span>`;
+        const actions = document.createElement("div");
+        actions.className = "admin-row-actions";
+        const edit = document.createElement("button");
+        edit.type = "button";
+        edit.className = "admin-row-delete";
+        edit.textContent = "Modifier";
+        edit.addEventListener("click", () => setProgrammeMathsEditing(c));
         const del = document.createElement("button");
         del.type = "button";
         del.className = "admin-row-delete";
@@ -541,9 +563,12 @@
         del.addEventListener("click", async () => {
           const next = chapitres.filter((x) => x.id !== c.id);
           await ghPut("programme-maths-ie5.json", next, `Retire le chapitre ${c.numero}`);
+          if (programmeMathsEditingId === c.id) setProgrammeMathsEditing(null);
           loadProgrammeMaths();
         });
-        row.appendChild(del);
+        actions.appendChild(edit);
+        actions.appendChild(del);
+        row.appendChild(actions);
         list.appendChild(row);
       });
     return chapitres;
@@ -556,15 +581,22 @@
     try {
       const chapitres = await ghGet("programme-maths-ie5.json");
       const fd = new FormData(form);
-      chapitres.push({
-        id: String(Date.now()),
+      const entry = {
+        id: programmeMathsEditingId || String(Date.now()),
         numero: fd.get("numero").trim(),
         titre: fd.get("titre"),
         notes: fd.get("notes") || "",
-      });
-      await ghPut("programme-maths-ie5.json", chapitres, `Ajoute le chapitre ${fd.get("numero")} (maths IE5)`);
+      };
+      const editing = Boolean(programmeMathsEditingId);
+      const next = editing ? chapitres.map((c) => (c.id === entry.id ? entry : c)) : [...chapitres, entry];
+      await ghPut(
+        "programme-maths-ie5.json",
+        next,
+        editing ? `Modifie le chapitre ${entry.numero} (maths IE5)` : `Ajoute le chapitre ${entry.numero} (maths IE5)`
+      );
+      setProgrammeMathsEditing(null);
       form.reset();
-      showStatus(status, "Chapitre ajouté.");
+      showStatus(status, editing ? "Chapitre modifié." : "Chapitre ajouté.");
       loadProgrammeMaths();
     } catch (err) {
       showStatus(status, err.message, true);
