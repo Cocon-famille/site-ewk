@@ -499,6 +499,31 @@
     return 0;
   }
 
+  // **gras**, *italique*, __souligné__, ==surligné== -> saisis via la barre d'outils ou à la main.
+  function renderNotes(text) {
+    let html = escapeHtml(text);
+    html = html.replace(/\*\*([^\n]+?)\*\*/g, "<strong>$1</strong>");
+    html = html.replace(/\*([^\n]+?)\*/g, "<em>$1</em>");
+    html = html.replace(/__([^\n]+?)__/g, "<u>$1</u>");
+    html = html.replace(/==([^\n]+?)==/g, "<mark>$1</mark>");
+    return html.replace(/\n/g, "<br>");
+  }
+
+  document.querySelectorAll("#programme-maths-richbar [data-wrap]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const textarea = document.getElementById("programme-maths-notes");
+      const marker = btn.dataset.wrap;
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const value = textarea.value;
+      const selected = value.slice(start, end) || "texte";
+      textarea.value = value.slice(0, start) + marker + selected + marker + value.slice(end);
+      textarea.focus();
+      textarea.selectionStart = start + marker.length;
+      textarea.selectionEnd = start + marker.length + selected.length;
+    });
+  });
+
   async function loadProgrammeMaths() {
     const chapitres = await ghGet("programme-maths-ie5.json");
     const list = document.getElementById("programme-maths-list");
@@ -508,7 +533,7 @@
       .forEach((c) => {
         const row = document.createElement("div");
         row.className = "admin-row";
-        row.innerHTML = `<span><span class="programme-num">${escapeHtml(c.numero)}</span><strong>${escapeHtml(c.titre)}</strong>${c.notes ? `<br><small>${escapeHtml(c.notes)}</small>` : ""}</span>`;
+        row.innerHTML = `<span><span class="programme-num">${escapeHtml(c.numero)}</span><strong>${escapeHtml(c.titre)}</strong>${c.notes ? `<br><small>${renderNotes(c.notes)}</small>` : ""}</span>`;
         const del = document.createElement("button");
         del.type = "button";
         del.className = "admin-row-delete";
