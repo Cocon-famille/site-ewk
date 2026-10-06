@@ -509,18 +509,45 @@
     return html.replace(/\n/g, "<br>");
   }
 
+  function toggleMarker(textarea, marker) {
+    const ml = marker.length;
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const value = textarea.value;
+    const selected = value.slice(start, end);
+
+    // La sélection inclut déjà les marqueurs (ex : "**mot**") -> on les retire.
+    if (selected.length >= ml * 2 && selected.startsWith(marker) && selected.endsWith(marker)) {
+      const inner = selected.slice(ml, selected.length - ml);
+      textarea.value = value.slice(0, start) + inner + value.slice(end);
+      textarea.focus();
+      textarea.selectionStart = start;
+      textarea.selectionEnd = start + inner.length;
+      return;
+    }
+
+    // Les marqueurs entourent la sélection (ex : **[mot]**) -> on les retire.
+    const before = value.slice(Math.max(0, start - ml), start);
+    const after = value.slice(end, end + ml);
+    if (before === marker && after === marker) {
+      textarea.value = value.slice(0, start - ml) + selected + value.slice(end + ml);
+      textarea.focus();
+      textarea.selectionStart = start - ml;
+      textarea.selectionEnd = start - ml + selected.length;
+      return;
+    }
+
+    // Pas encore formaté -> on ajoute les marqueurs.
+    const text = selected || "texte";
+    textarea.value = value.slice(0, start) + marker + text + marker + value.slice(end);
+    textarea.focus();
+    textarea.selectionStart = start + ml;
+    textarea.selectionEnd = start + ml + text.length;
+  }
+
   document.querySelectorAll("#programme-maths-richbar [data-wrap]").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const textarea = document.getElementById("programme-maths-notes");
-      const marker = btn.dataset.wrap;
-      const start = textarea.selectionStart;
-      const end = textarea.selectionEnd;
-      const value = textarea.value;
-      const selected = value.slice(start, end) || "texte";
-      textarea.value = value.slice(0, start) + marker + selected + marker + value.slice(end);
-      textarea.focus();
-      textarea.selectionStart = start + marker.length;
-      textarea.selectionEnd = start + marker.length + selected.length;
+      toggleMarker(document.getElementById("programme-maths-notes"), btn.dataset.wrap);
     });
   });
 
