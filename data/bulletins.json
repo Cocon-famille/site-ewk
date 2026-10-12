@@ -1,1 +1,66 @@
-[]
+[
+  {
+    "id": "1791806748885",
+    "periode": "1er trimestre",
+    "matieres": [
+      {
+        "nom": "Mathématiques - Additions en ligne",
+        "niveau": 4,
+        "appreciation": ""
+      },
+      {
+        "nom": "Mathématiques - Additions posées",
+        "niveau": 3,
+        "appreciation": ""
+      },
+      {
+        "nom": "Français - Lecture",
+        "niveau": 3,
+        "appreciation": ""
+      },
+      {
+        "nom": "Français - Ecriture",
+        "niveau": 3,
+        "appreciation": ""
+      },
+      {
+        "nom": "Histoire",
+        "niveau": 3,
+        "appreciation": "NON ABORDÉ"
+      },
+      {
+        "nom": "Sciences - Tenue lors des expériences",
+        "niveau": 3,
+        "appreciation": ""
+      },
+      {
+        "nom": "Sciences - Copie et illustration de la leçon",
+        "niveau": 3,
+        "appreciation": ""
+      },
+      {
+        "nom": "Poésie",
+        "niveau": 4,
+        "appreciation": "NON ABORDÉ"
+      },
+      {
+        "nom": "Utiliser les outils numériques de la classe",
+        "niveau": 2,
+        "appreciation": ""
+      },
+      {
+        "nom": "Autonomie",
+        "niveau": 2,
+        "appreciation": ""
+      },
+      {
+        "nom": "Comportement",
+        "niveau": 3,
+        "appreciation": ""
+      }
+    ],
+    "mot": "Un premier semestre en IE3 très prometteur pour Marin. Il sait se donner à fond dans toutes les compétences et se\ntenir sage. Néanmoins, une once de rébellion subsiste en classe, et Marin doit savoir canaliser son énergie, du\nmoins en classe. En mathématiques les additions en ligne sont quasi-parfaites, je te félicite, et les additions posées\nnécessitent un renforcement. En français, lecture parfaite, orthographe légèrement \"phonétique\". En sciences Marin\ndoit aussi, particulièrement dans cette matière, savoir canaliser son énergie. Très prometteur en tout cas pour la\nsuite de l'année !\nEn vous priant d'agréer mes sentiments les plus distingués,\nDOMENECH Maël\nProfesseur à l'École du Weekend",
+    "badges": [],
+    "attachment": "bulletins-files/1791806746539-bulletin__2_.pdf"
+  }
+]
